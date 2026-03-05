@@ -13,6 +13,9 @@ import skipFormatting from 'eslint-config-prettier/flat';
 export default defineConfigWithVueTs(
 	{
 		name: 'app/files-to-lint',
+		rules: {
+			'typescript-eslint/no-unused-vars': 'error',
+		},
 		files: ['**/*.{vue,ts,mts,tsx}'],
 	},
 

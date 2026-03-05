@@ -1,4 +1,4 @@
-import type { CoordinateReference, CoordinatePair } from './abstract';
+import type { CoordinateContainer, CoordinatePair } from './abstract';
 import type { EntityTypes } from './entity';
 
 /**
@@ -10,7 +10,7 @@ export interface BoardState {
 	 * Entities are allowed to exist beyond the borders, but not terrain.
 	 */
 	size: CoordinatePair;
-	cellData: CoordinateReference<RemoteEntityReference[]>;
+	cellData: CoordinateContainer<BoardCellEntityReference[]>;
 }
 
 /**
@@ -18,7 +18,7 @@ export interface BoardState {
  *
  * No actual information about the entity's properties is stored beyond its type.
  */
-export interface RemoteEntityReference {
+export interface BoardCellEntityReference {
 	/** The type of entity. */
 	type: EntityTypes;
 	/** The location of the referenced entity. */
