@@ -1,4 +1,4 @@
-import type { BoardState } from './board';
+import type { BoardCellEntityReference, BoardState } from './board';
 
 /**
  * Type of an object containing all information about the game that is currently being used.
@@ -22,6 +22,10 @@ const gameState: GameState = {
 		cellData: [],
 	},
 };
+
+export function addCellData(x: number, y: number, data: BoardCellEntityReference) {
+	(gameState.boardState.cellData[x]?.[y] as BoardCellEntityReference[])?.push(data);
+}
 
 declare global {
 	interface Window {
