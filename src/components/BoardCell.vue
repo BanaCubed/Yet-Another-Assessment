@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { BoardCellEntityReference } from '@/scripts/board';
 import type { GenericEntity } from '@/scripts/entity';
 
 defineProps<{
-	entities: GenericEntity[];
+	entities?: GenericEntity[] | BoardCellEntityReference[];
 }>();
 </script>
 
