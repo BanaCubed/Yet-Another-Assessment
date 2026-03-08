@@ -20,8 +20,11 @@ const gameState: GameState = {
 			y: 5,
 		},
 		cellData: [],
+		entityData: {},
 	},
 };
+
+// #region BoardState Modification
 
 export function addCellData(x: number, y: number, data: BoardCellEntityReference) {
 	(gameState.boardState.cellData[x]?.[y] as BoardCellEntityReference[])?.push(data);
@@ -38,10 +41,12 @@ export function removeCellData(x: number, y: number, data: BoardCellEntityRefere
 		},
 	);
 
-	foundIndexes.forEach(element => {
+	foundIndexes.forEach((element) => {
 		(gameState.boardState.cellData[x]?.[y] as BoardCellEntityReference[])?.splice(element, 1);
 	});
 }
+
+// #endregion BoardState Modification
 
 declare global {
 	interface Window {

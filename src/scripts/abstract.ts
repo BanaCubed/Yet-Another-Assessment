@@ -20,6 +20,11 @@ export interface CoordinatePair {
 	y: number;
 }
 
+export const CoordinatePairZero = {
+	x: 0,
+	y: 0,
+};
+
 /**
  * Function meant for easier use of coordinate containers.
  *
