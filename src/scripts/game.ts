@@ -1,4 +1,4 @@
-import type { BoardCellEntityReference, BoardState } from './board';
+import { BoardState, type BoardCellEntityReference } from './board';
 
 /**
  * Type of an object containing all information about the game that is currently being used.
@@ -14,21 +14,8 @@ export interface GameState {
  * Object containing all information about the game's current state.
  */
 const gameState: GameState = {
-	boardState: {
-		size: {
-			x: 5,
-			y: 5,
-		},
-		cellData: [],
-		entityData: {},
-	},
+	boardState: new BoardState({ x: 5, y: 5 }),
 };
-
-// #region BoardState Modification
-
-export function addCellData(x: number, y: number, data: BoardCellEntityReference) {
-	(gameState.boardState.cellData[x]?.[y] as BoardCellEntityReference[])?.push(data);
-}
 
 export function removeCellData(x: number, y: number, data: BoardCellEntityReference) {
 	const foundIndexes: number[] = [];

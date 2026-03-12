@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { BoardCellEntityReference } from '@/scripts/board';
-import { GenericEntity } from '@/scripts/entity';
+import { GenericEntity } from '@/scripts/entities/generic';
 import game from '@/scripts/game';
 import { computed } from 'vue';
 
