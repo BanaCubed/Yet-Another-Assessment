@@ -22,6 +22,7 @@ const renderers: ComputedRef<Array<(() => JSX.Element) | null>> = computed(() =>
 
 <template>
 	<component v-for="Renderer in renderers" :is="Renderer" class="entity-render" />
+	<div class="coordinate-overlay">({{ location.x }}, {{ location.y }})</div>
 </template>
 
 <style lang="css" scoped>
@@ -31,5 +32,13 @@ const renderers: ComputedRef<Array<(() => JSX.Element) | null>> = computed(() =>
 	left: 50%;
 	display: block;
 	translate: -50% -50%;
+}
+
+.coordinate-overlay {
+	position: absolute;
+	bottom: 5%;
+	left: 5%;
+	font-size: 0.8em;
+	opacity: 0.75;
 }
 </style>

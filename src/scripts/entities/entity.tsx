@@ -1,6 +1,6 @@
 import type { JSX } from 'vue/jsx-runtime';
 import { type CoordinatePair, CoordinatePairZero } from '../abstract';
-import { computed, type ComputedRef } from 'vue';
+import type { GameState } from '../game';
 
 /**
  * Enum containing all valid types of entities.
@@ -9,6 +9,8 @@ export enum EntityTypes {
 	Generic,
 	Player,
 }
+
+export type EntityEventHandler = (game: GameState) => void;
 
 /**
  * Represents a generic entity type, from which other entities are derived.
@@ -40,6 +42,11 @@ export default class Entity {
 			this.location = coordinates;
 		}
 	}
+
+	public onPlayerTurnStart?: EntityEventHandler;
+	public onPlayerTurnEnd?: EntityEventHandler;
+	public onEnemyTurn?: EntityEventHandler;
+	public onRoundEnd?: EntityEventHandler;
 }
 
 export const entityFallbackRenderer: () => JSX.Element = () => <div>???</div>;
