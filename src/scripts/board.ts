@@ -17,7 +17,7 @@ export class BoardState {
 	 * There is no confirmation that any entities exist as both actual data and a reference,
 	 * which could prove to be a problem.
 	 */
-	public cellData: CoordinateContainer<BoardCellEntityReference[]> = [];
+	public cellData: CoordinateContainer<EntityReference[]> = [];
 
 	/**
 	 * An "array" of all the different entities loaded in the current board.
@@ -42,14 +42,14 @@ export class BoardState {
 		this.entityData[TYPE] ??= [];
 		this.entityData[TYPE].push(entity);
 
-		const INDEX = this.entityData[TYPE].indexOf(entity);
-		const reference: BoardCellEntityReference = {
+		const ENTITY_INDEX = this.entityData[TYPE].indexOf(entity);
+		const reference: EntityReference = {
 			type: TYPE,
-			loc: INDEX,
+			loc: ENTITY_INDEX,
 		};
 
 		this.cellData[LOC.x] ??= {};
-		(this.cellData[LOC.x] as Record<number, BoardCellEntityReference[]>)[LOC.y] ??= [];
+		(this.cellData[LOC.x] as Record<number, EntityReference[]>)[LOC.y] ??= [];
 		try {
 			// Using ?. here is easier that using 'as' repeatedly.
 			this.cellData[LOC.x]?.[LOC.y]?.push(reference);
@@ -60,28 +60,50 @@ export class BoardState {
 
 	/**
 	 * Removes an entity from the board in relevant places.
+	 * @param entity The entity to remove.
+	 * @todo Let the entity parameter also be a BoardCellEntityReference.
 	 */
 	public removeEntity(entity: GenericEntity) {
 		const TYPE = entity.entityType;
 		const LOC = entity.location;
 
 		this.entityData[TYPE] ??= [];
-		const edIndex = this.entityData[TYPE].indexOf(entity);
+		const ENTITY_INDEX = this.entityData[TYPE].indexOf(entity);
 
-		const reference = {
+		const ENTITY_REFERENCE = {
 			type: TYPE,
-			loc: edIndex,
+			loc: ENTITY_INDEX,
 		};
 
-		const cdIndex =
+		const CELL_INDEX =
 			this.cellData[LOC.x]?.[LOC.y]?.findIndex(
-				(el) => el.type === reference.type && el.loc === reference.loc,
+				(el) => el.type === ENTITY_REFERENCE.type && el.loc === ENTITY_REFERENCE.loc,
 			) ?? 1;
 
-		this.entityData[TYPE][edIndex] = undefined;
+		this.entityData[TYPE][ENTITY_INDEX] = undefined;
 
-		if (cdIndex === -1) return; // better safe than sorry
-		this.cellData[LOC.x]?.[LOC.y]?.splice(cdIndex, 1);
+		if (CELL_INDEX === -1) return; // better safe than sorry
+		this.cellData[LOC.x]?.[LOC.y]?.splice(CELL_INDEX, 1);
+	}
+
+	/**
+	 * Gathers all the entities on a specified cell of the board's grid and returns them in an array.
+	 * @param tile The tile on the board's grid to get the entities at.
+	 */
+	public gatherEntitiesOnTile(tile: CoordinatePair): GenericEntity[] {
+		const entityReferencesArray: EntityReference[] = this.cellData[tile.x]?.[tile.y] ?? [];
+
+		const entityArray: GenericEntity[] = [];
+		for (let i = 0; i < entityReferencesArray.length; i++) {
+			const entityReference: EntityReference = entityReferencesArray[i] as EntityReference;
+			if (entityReference !== undefined) {
+				entityArray.push(
+					this.entityData[entityReference.type]?.[entityReference.loc] as GenericEntity,
+				);
+			}
+		}
+
+		return entityArray;
 	}
 }
 
@@ -90,7 +112,7 @@ export class BoardState {
  *
  * No actual information about the entity's properties is stored beyond its type.
  */
-export interface BoardCellEntityReference {
+export interface EntityReference {
 	/** The type of entity. */
 	type: EntityTypes;
 	/** The location of the referenced entity. */

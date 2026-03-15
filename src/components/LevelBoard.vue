@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import game from '@/scripts/game';
 import BoardCell from './BoardCell.vue';
+import type { BoardState } from '@/scripts/board';
+
+const props = defineProps<{
+	state: BoardState;
+}>();
 </script>
 
 <template>
@@ -9,10 +14,11 @@ import BoardCell from './BoardCell.vue';
 			Entities that exist outside the board's main grid size aren't rendered.
 			I'm going to pretend this is intentional and won't be an issue later
 		-->
-		<div class="board-row" v-for="row in game.boardState.size.x">
-			<div class="board-cell" v-for="col in game.boardState.size.y">
+		<div class="board-row" v-for="row in state.size.x">
+			<div class="board-cell" v-for="col in state.size.y">
 				<div class="cell-content">
-					<BoardCell :entities="game.boardState.cellData[row]?.[col]" />
+					<BoardCell :entities="state.gatherEntitiesOnTile({ x: row, y: col })" />
+					({{ row }}, {{ col }})
 				</div>
 			</div>
 		</div>

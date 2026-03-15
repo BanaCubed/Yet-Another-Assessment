@@ -1,3 +1,4 @@
+import type { CoordinatePair } from '../abstract';
 import EntityTypes, { GenericEntity } from './generic';
 
 /**
@@ -5,8 +6,8 @@ import EntityTypes, { GenericEntity } from './generic';
  */
 
 export default class PlayerEntity extends GenericEntity {
-	constructor() {
-		super();
+	constructor(coordinates: CoordinatePair) {
+		super(coordinates);
 		this.entityType = EntityTypes.Player;
 	}
 }

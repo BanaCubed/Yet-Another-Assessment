@@ -27,13 +27,14 @@ export const CoordinatePairZero = {
 
 /**
  * Function meant for easier use of coordinate containers.
- *
+ * Unwraps a CoordinateContainer using a CoordinatePair.
+ * @param container The container to unwrap.
+ * @param coordPair The location in which to grab the value from the container.
  * @see {@link CoordinateContainer}, {@link CoordinatePair}
- * @todo Give this function a shorter name.
  */
-export function coordContainerGrabber<K>(
-	coordRef: CoordinateContainer<K>,
+export function coordContainerUnwrapper<K>(
+	container: CoordinateContainer<K>,
 	coordPair: CoordinatePair,
 ): K | undefined {
-	return coordRef[coordPair.x]?.[coordPair.y] ?? undefined;
+	return container[coordPair.x]?.[coordPair.y] ?? undefined;
 }

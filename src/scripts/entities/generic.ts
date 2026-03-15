@@ -19,5 +19,7 @@ export class GenericEntity {
 	/** The location of the entity. */
 	public location: CoordinatePair = CoordinatePairZero;
 
-	constructor() {}
+	constructor(coordinates?: CoordinatePair) {
+		this.location = coordinates ?? { x: 0, y: 0 };
+	}
 }
