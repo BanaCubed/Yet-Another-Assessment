@@ -41,3 +41,5 @@ export default class Entity {
 		}
 	}
 }
+
+export const entityFallbackRenderer: () => JSX.Element = () => <div>???</div>;

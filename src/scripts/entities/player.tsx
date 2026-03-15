@@ -10,6 +10,6 @@ export default class PlayerEntity extends Entity {
 		super(coordinates);
 		this.entityType = EntityTypes.Player;
 
-		this.render = () => <>P</>;
+		this.render = () => <div>P</div>;
 	}
 }

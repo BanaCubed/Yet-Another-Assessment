@@ -16,8 +16,10 @@ const props = defineProps<{
 		<div class="board-row" v-for="row in state.size.x">
 			<div class="board-cell" v-for="col in state.size.y">
 				<div class="cell-content">
-					<BoardCell :entities="state.gatherEntitiesOnTile({ x: row, y: col })" />
-					({{ row }}, {{ col }})
+					<BoardCell
+						:entities="state.gatherEntitiesOnTile({ x: row, y: col })"
+						:location="{ x: row, y: col }"
+					/>
 				</div>
 			</div>
 		</div>
@@ -39,5 +41,12 @@ const props = defineProps<{
 	border: 2px black solid;
 	width: 50px;
 	height: 50px;
+}
+
+.cell-content {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 </style>
