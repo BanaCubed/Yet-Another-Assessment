@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import game from '@/scripts/game';
 import BoardCell from './BoardCell.vue';
 import type { BoardState } from '@/scripts/board';
 
