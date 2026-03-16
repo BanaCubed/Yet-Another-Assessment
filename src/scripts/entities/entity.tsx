@@ -5,7 +5,7 @@ import type { GameState } from '../game';
 /**
  * Enum containing all valid types of entities.
  */
-export enum EntityTypes {
+export enum EntityTypeID {
 	Generic,
 	Player,
 }
@@ -16,8 +16,8 @@ export type EntityEventHandler = (game: GameState) => void;
  * Represents a generic entity type, from which other entities are derived.
  */
 export default class Entity {
-	/** Indicator of the type of entity based on {@link EntityTypes}. */
-	public entityType: EntityTypes = EntityTypes.Generic;
+	/** Indicator of the type of entity based on {@link EntityTypeID}. */
+	public entityType: EntityTypeID = EntityTypeID.Generic;
 	/** The location of the entity. */
 	public location: CoordinatePair = CoordinatePairZero;
 

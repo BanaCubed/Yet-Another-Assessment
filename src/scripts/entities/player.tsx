@@ -1,5 +1,5 @@
 import type { CoordinatePair } from '../abstract';
-import Entity, { EntityTypes } from './entity';
+import Entity, { EntityTypeID } from './entity';
 import { computed } from 'vue';
 
 /**
@@ -8,7 +8,7 @@ import { computed } from 'vue';
 export default class PlayerEntity extends Entity {
 	constructor(coordinates: CoordinatePair) {
 		super(coordinates);
-		this.entityType = EntityTypes.Player;
+		this.entityType = EntityTypeID.Player;
 
 		this.render = () => <div>P</div>;
 	}

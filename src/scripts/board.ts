@@ -1,6 +1,6 @@
 import type { CoordinateContainer, CoordinatePair } from './abstract';
 import type Entity from './entities/entity';
-import type { EntityTypes } from './entities/entity';
+import type { EntityTypeID } from './entities/entity';
 
 /**
  * Type of an object containing all information about a board.
@@ -24,9 +24,9 @@ export class BoardState {
 	 * Each type of entity exists seperately, which should help avoid issues when
 	 * entities are added or removed.
 	 *
-	 * Type annotation refers to key as a number, but it should be treated as {@link EntityTypes}
+	 * Type annotation refers to key as a number, but it should be treated as {@link EntityTypeID}
 	 */
-	public entityData: Partial<Record<EntityTypes, Array<Entity | undefined>>> = {};
+	public entityData: Partial<Record<EntityTypeID, Array<Entity | undefined>>> = {};
 
 	constructor(size: CoordinatePair) {
 		this.size = size;
@@ -114,7 +114,7 @@ export class BoardState {
  */
 export interface EntityReference {
 	/** The type of entity. */
-	type: EntityTypes;
+	type: EntityTypeID;
 	/** The location of the referenced entity. */
 	loc: number;
 }

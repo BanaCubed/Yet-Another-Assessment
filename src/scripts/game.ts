@@ -9,6 +9,15 @@ import { BoardState } from './board';
 export interface GameState {
 	/** The state of the current board. */
 	boardState: BoardState;
+	/** Index of the valid turn statuses that the game is currently in. */
+	turnStatus: TurnStatusID;
+}
+
+export enum TurnStatusID {
+	preview = -2, // Likely to end up unused, but would be used for level previews.
+	menu = -1,
+	playerTurn = 0,
+	enemyTurn = 1,
 }
 
 /**
@@ -16,6 +25,7 @@ export interface GameState {
  */
 const gameState: GameState = {
 	boardState: new BoardState({ x: 5, y: 5 }),
+	turnStatus: TurnStatusID.menu,
 };
 
 declare global {
