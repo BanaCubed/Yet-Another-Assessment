@@ -1,6 +1,7 @@
 import type { JSX } from 'vue/jsx-runtime';
 import { type CoordinatePair, CoordinatePairZero } from '../abstract';
 import type { GameState } from '../game';
+import type { BoardState } from '../board';
 
 /**
  * Enum containing all valid types of entities.
@@ -8,9 +9,10 @@ import type { GameState } from '../game';
 export enum EntityTypeID {
 	Generic,
 	Player,
+	Overlay,
 }
 
-export type EntityEventHandler = (game: GameState) => void;
+export type EntityEventHandler = (board: BoardState) => void;
 
 /**
  * Represents a generic entity type, from which other entities are derived.
@@ -45,7 +47,7 @@ export default class Entity {
 
 	public onPlayerTurnStart?: EntityEventHandler;
 	public onPlayerTurnEnd?: EntityEventHandler;
-	public onEnemyTurn?: EntityEventHandler;
+	public onEnemyTurnStart?: EntityEventHandler;
 	public onRoundEnd?: EntityEventHandler;
 }
 

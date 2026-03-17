@@ -1,5 +1,5 @@
 import type { CoordinatePair } from '../abstract';
-import Entity from './entity';
+import Entity, { EntityTypeID } from './entity';
 import type { JSX } from 'vue/jsx-runtime';
 
 /**
@@ -9,6 +9,7 @@ import type { JSX } from 'vue/jsx-runtime';
 export default class OverlayEntity extends Entity {
 	constructor(coordinates: CoordinatePair, display: () => JSX.Element) {
 		super(coordinates);
+		this.entityType = EntityTypeID.Overlay;
 
 		this.render = display;
 	}

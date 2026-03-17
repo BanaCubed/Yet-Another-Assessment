@@ -1,5 +1,6 @@
 import { ref, type Ref } from 'vue';
 import { BoardState } from './board';
+import TurnHandler, { TurnStatusID } from './turns';
 
 /**
  * Type of an object containing all information about the game that is currently being used.
@@ -9,15 +10,8 @@ import { BoardState } from './board';
 export interface GameState {
 	/** The state of the current board. */
 	boardState: BoardState;
-	/** Index of the valid turn statuses that the game is currently in. */
-	turnStatus: TurnStatusID;
-}
-
-export enum TurnStatusID {
-	preview = -2, // Likely to end up unused, but would be used for level previews.
-	menu = -1,
-	playerTurn = 0,
-	enemyTurn = 1,
+	/** The current turn handler. Exists outside of boardState to be quirky. */
+	turnHandler: TurnHandler;
 }
 
 /**
@@ -25,7 +19,7 @@ export enum TurnStatusID {
  */
 const gameState: GameState = {
 	boardState: new BoardState({ x: 5, y: 5 }),
-	turnStatus: TurnStatusID.menu,
+	turnHandler: new TurnHandler(),
 };
 
 declare global {
