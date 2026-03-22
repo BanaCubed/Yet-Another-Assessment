@@ -1,7 +1,6 @@
 <template>
-	<button class="proceed-button" @click="proceed" @touchend="proceed" @mouseup="proceed">
-		Proceed
-	</button>
+	<!-- The @click event handler doesn't quite handle all edge cases but it should be sufficient -->
+	<button class="proceed-button" @click="proceed">Proceed</button>
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,5 @@
 import type { JSX } from 'vue/jsx-runtime';
 import { type CoordinatePair, CoordinatePairZero } from '../abstract';
-import type { GameState } from '../game';
 import type { BoardState } from '../board';
 
 /**

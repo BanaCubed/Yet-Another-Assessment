@@ -11,22 +11,28 @@ export enum TurnStatusID {
 }
 
 export default class TurnHandler {
-	public status: TurnStatusID = TurnStatusID.Menu;
+	// Once a menu system is in place the start turn status should be changed to TurnStatusID.Menu
+	public status: TurnStatusID = TurnStatusID.PlayerTurn;
 	public turnCount: number = 0;
 
 	/**
 	 * Proceeds the current turn status into the next one, and calls the relevant event handlers.
 	 */
 	public proceed() {
+		console.log('Proceeding');
 		if (this.status === TurnStatusID.PlayerTurn) {
+			console.log('Proceeding: Running onPlayerTurnEnd handlers.');
 			this.runOnPlayerTurnEnd(game.value.boardState);
 
 			this.status = TurnStatusID.EnemyTurn;
+			console.log('Proceeding: Running onEnemyTurnStart handlers.');
 			this.runOnEnemyTurnStart(game.value.boardState);
 		} else if (this.status === TurnStatusID.EnemyTurn) {
+			console.log('Proceeding: Running onRoundEnd handlers.');
 			this.runOnRoundEnd(game.value.boardState);
 
 			this.status = TurnStatusID.PlayerTurn;
+			console.log('Proceeding: Running onPlayerTurnStart handlers.');
 			this.runOnPlayerTurnStart(game.value.boardState);
 		}
 	}
