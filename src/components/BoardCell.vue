@@ -9,19 +9,28 @@ const props = defineProps<{
 	location: CoordinatePair;
 }>();
 
-const renderers: ComputedRef<Array<(() => JSX.Element) | null>> = computed(() => {
-	const array = [];
+const Renderer: ComputedRef<JSX.Element> = computed(() => {
+	const computedRenderers = [];
 	for (let i = 0; i < props.entities.length; i++) {
 		const entity = props.entities[i];
 
-		array.push(entity?.render ?? entityFallbackRenderer);
+		computedRenderers.push(entity?.computedRender ?? computed(() => <></>));
 	}
-	return array;
+
+	console.log(computedRenderers);
+
+	return (
+		<>
+			{computedRenderers.map((el) => (
+				<div class="entity-render">e{el.value}</div>
+			))}
+		</>
+	);
 });
 </script>
 
 <template>
-	<component v-for="Renderer in renderers" :is="Renderer" class="entity-render" />
+	<component :is="Renderer" />
 	<div class="coordinate-overlay">({{ location.x }}, {{ location.y }})</div>
 </template>
 

@@ -1,3 +1,4 @@
+import { computed } from 'vue';
 import type { CoordinatePair } from '../abstract';
 import Entity, { EntityTypeID, type EntityEventHandler } from './entity';
 import type { JSX } from 'vue/jsx-runtime';
@@ -11,7 +12,7 @@ export default class OverlayEntity extends Entity {
 		super(coordinates);
 		this.entityType = EntityTypeID.Overlay;
 
-		this.render = display;
+		this.functionRender = display;
 	}
 
 	public onPlayerTurnEnd?: EntityEventHandler | undefined = () => {
