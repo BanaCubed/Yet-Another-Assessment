@@ -22,6 +22,8 @@ export default class Entity {
 	public entityType: EntityTypeID = EntityTypeID.Generic;
 	/** The location of the entity. */
 	public location: CoordinatePair = CoordinatePairZero;
+	/** Whether this entity should be cleaned up on the next turn proceeding. */
+	public markForDestruction: boolean = false;
 
 	constructor(coordinates?: CoordinatePair) {
 		this.location = coordinates ?? { x: 0, y: 0 };

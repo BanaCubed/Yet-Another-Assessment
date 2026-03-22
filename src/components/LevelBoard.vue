@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BoardCell from './BoardCell.vue';
 import type { BoardState } from '@/scripts/board';
+import ProceedButton from './ProceedButton.vue';
 
 const props = defineProps<{
 	state: BoardState;
@@ -22,6 +23,12 @@ const props = defineProps<{
 					/>
 				</div>
 			</div>
+		</div>
+		<!--
+			Temporary container for the proceed button
+		-->
+		<div id="proceed-button-container">
+			<ProceedButton />
 		</div>
 	</div>
 </template>

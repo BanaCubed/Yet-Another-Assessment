@@ -1,5 +1,5 @@
 import type { CoordinatePair } from '../abstract';
-import Entity, { EntityTypeID } from './entity';
+import Entity, { EntityTypeID, type EntityEventHandler } from './entity';
 import type { JSX } from 'vue/jsx-runtime';
 
 /**
@@ -13,4 +13,11 @@ export default class OverlayEntity extends Entity {
 
 		this.render = display;
 	}
+
+	public onPlayerTurnEnd?: EntityEventHandler | undefined = () => {
+		this.markForDestruction = true;
+	};
+	public onRoundEnd?: EntityEventHandler | undefined = () => {
+		this.markForDestruction = true;
+	};
 }
