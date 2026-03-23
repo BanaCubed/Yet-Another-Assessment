@@ -32,10 +32,7 @@ export default class Entity {
 	/**
 	 * Renders the entity using its current status and such.
 	 */
-	public computedRender: ComputedRef<JSX.Element> = computed(
-		() => this.functionRender?.() ?? entityFallbackRenderer,
-	);
-	public functionRender?: () => JSX.Element;
+	public functionRender: () => JSX.Element = () => entityFallbackRenderer;
 
 	/**
 	 * Moves the current entity along the board by a specified value.

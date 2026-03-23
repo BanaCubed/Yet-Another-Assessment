@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import type { CoordinatePair } from '@/scripts/abstract';
 import Entity, { entityFallbackRenderer } from '@/scripts/entities/entity';
-import { computed, type ComputedRef } from 'vue';
+import { computed, unref, type ComputedRef } from 'vue';
 import type { JSX } from 'vue/jsx-runtime';
 
 const props = defineProps<{
@@ -10,19 +10,20 @@ const props = defineProps<{
 }>();
 
 const Renderer: ComputedRef<JSX.Element> = computed(() => {
-	const computedRenderers = [];
+	const functionRenderers = [];
 	for (let i = 0; i < props.entities.length; i++) {
 		const entity = props.entities[i];
 
-		computedRenderers.push(entity?.computedRender ?? computed(() => <></>));
+		// Using a fallback of <></> here is case the other fallback of <>???</> doesn't work
+		functionRenderers.push(entity?.functionRender ?? (() => <></>));
 	}
 
-	console.log(computedRenderers);
+	console.log(functionRenderers);
 
 	return (
 		<>
-			{computedRenderers.map((el) => (
-				<div class="entity-render">e{el.value}</div>
+			{functionRenderers.map((el) => (
+				<div class="entity-render">{el()}</div>
 			))}
 		</>
 	);
