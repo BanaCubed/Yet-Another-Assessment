@@ -1,6 +1,7 @@
 import type { JSX } from 'vue/jsx-runtime';
 import { type CoordinatePair, CoordinatePairZero } from '../abstract';
 import type { BoardState } from '../board';
+import { computed, type ComputedRef } from 'vue';
 
 /**
  * Enum containing all valid types of entities.
@@ -31,7 +32,7 @@ export default class Entity {
 	/**
 	 * Renders the entity using its current status and such.
 	 */
-	public functionRender: () => JSX.Element = () => entityFallbackRenderer;
+	public computedRender: ComputedRef<JSX.Element> = computed(() => entityFallbackRenderer);
 
 	/**
 	 * Moves the current entity along the board by a specified value.

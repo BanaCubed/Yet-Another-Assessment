@@ -1,3 +1,4 @@
+import { computed } from 'vue';
 import type { CoordinatePair } from '../abstract';
 import Entity, { EntityTypeID, type EntityEventHandler } from './entity';
 
@@ -9,10 +10,10 @@ export default class PlayerEntity extends Entity {
 		super(coordinates);
 		this.entityType = EntityTypeID.Player;
 
-		this.functionRender = () => <div>P</div>;
+		this.computedRender = computed(() => <div>P</div>);
 	}
 
 	public onPlayerTurnEnd?: EntityEventHandler | undefined = () => {
-		this.functionRender = () => <div>P2</div>;
+		this.computedRender = computed(() => <div>P2</div>);
 	};
 }

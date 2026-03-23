@@ -10,20 +10,17 @@ const props = defineProps<{
 }>();
 
 const Renderer: ComputedRef<JSX.Element> = computed(() => {
-	const functionRenderers = [];
+	const functionRenderers: ComputedRef<JSX.Element>[] = [];
 	for (let i = 0; i < props.entities.length; i++) {
 		const entity = props.entities[i];
-
 		// Using a fallback of <></> here is case the other fallback of <>???</> doesn't work
-		functionRenderers.push(entity?.functionRender ?? (() => <></>));
+		functionRenderers.push(entity?.computedRender ?? computed(() => <></>));
 	}
-
-	console.log(functionRenderers);
 
 	return (
 		<>
-			{functionRenderers.map((el) => (
-				<div class="entity-render">{el()}</div>
+			{functionRenderers.map((El) => (
+				<div class="entity-render">{El}</div>
 			))}
 		</>
 	);
@@ -31,7 +28,7 @@ const Renderer: ComputedRef<JSX.Element> = computed(() => {
 </script>
 
 <template>
-	<component :is="Renderer" />
+	<Renderer />
 	<div class="coordinate-overlay">({{ location.x }}, {{ location.y }})</div>
 </template>
 
