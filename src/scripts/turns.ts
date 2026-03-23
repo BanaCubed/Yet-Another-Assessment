@@ -1,5 +1,4 @@
 import type { BoardState } from './board';
-import type Entity from './entities/entity';
 import { EntityTypeID } from './entities/entity';
 import game from './game';
 

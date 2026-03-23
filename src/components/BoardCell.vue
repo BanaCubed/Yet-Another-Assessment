@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import type { CoordinatePair } from '@/scripts/abstract';
-import Entity, { entityFallbackRenderer } from '@/scripts/entities/entity';
-import { computed, unref, type ComputedRef } from 'vue';
+import Entity from '@/scripts/entities/entity';
+import { computed, type ComputedRef } from 'vue';
 import type { JSX } from 'vue/jsx-runtime';
 
 const props = defineProps<{

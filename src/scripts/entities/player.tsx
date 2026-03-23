@@ -1,4 +1,3 @@
-import { computed } from 'vue';
 import type { CoordinatePair } from '../abstract';
 import Entity, { EntityTypeID, type EntityEventHandler } from './entity';
 

@@ -1,7 +1,6 @@
 import type { JSX } from 'vue/jsx-runtime';
 import { type CoordinatePair, CoordinatePairZero } from '../abstract';
 import type { BoardState } from '../board';
-import { computed, type ComputedRef } from 'vue';
 
 /**
  * Enum containing all valid types of entities.
