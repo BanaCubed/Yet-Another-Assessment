@@ -21,24 +21,24 @@ export default class TurnHandler {
 		console.log('Proceeding');
 		if (this.status === TurnStatusID.PlayerTurn) {
 			console.log('Proceeding: Running onPlayerTurnEnd handlers.');
-			this.runOnPlayerTurnEnd(game.value.boardState);
+			TurnHandler.runOnPlayerTurnEnd(game.value.boardState);
 
 			this.status = TurnStatusID.EnemyTurn;
 			console.log('Proceeding: Running onEnemyTurnStart handlers.');
-			this.runOnEnemyTurnStart(game.value.boardState);
+			TurnHandler.runOnEnemyTurnStart(game.value.boardState);
 		} else if (this.status === TurnStatusID.EnemyTurn) {
 			console.log('Proceeding: Running onRoundEnd handlers.');
-			this.runOnRoundEnd(game.value.boardState);
+			TurnHandler.runOnRoundEnd(game.value.boardState);
 
 			this.status = TurnStatusID.PlayerTurn;
 			console.log('Proceeding: Running onPlayerTurnStart handlers.');
-			this.runOnPlayerTurnStart(game.value.boardState);
+			TurnHandler.runOnPlayerTurnStart(game.value.boardState);
 		}
 	}
 
 	// I cannot be bothered to simplify this.
 	// Also this should run perfectly fine so no particular need to.
-	private runOnPlayerTurnStart(board: BoardState) {
+	private static runOnPlayerTurnStart(board: BoardState) {
 		const ids: EntityTypeID[] = Object.values(EntityTypeID).filter((key) =>
 			isNaN(Number(EntityTypeID[key as unknown as number])),
 		) as EntityTypeID[];
@@ -51,7 +51,7 @@ export default class TurnHandler {
 		}
 	}
 
-	private runOnPlayerTurnEnd(board: BoardState) {
+	private static runOnPlayerTurnEnd(board: BoardState) {
 		// There's not a chance in hell this works properly for player movement
 		const ids: EntityTypeID[] = Object.values(EntityTypeID).filter((key) =>
 			isNaN(Number(EntityTypeID[key as unknown as number])),
@@ -65,7 +65,7 @@ export default class TurnHandler {
 		}
 	}
 
-	private runOnEnemyTurnStart(board: BoardState) {
+	private static runOnEnemyTurnStart(board: BoardState) {
 		// Top 10 inconsistent setups of all time
 		const ids: EntityTypeID[] = Object.values(EntityTypeID).filter((key) =>
 			isNaN(Number(EntityTypeID[key as unknown as number])),
@@ -79,7 +79,7 @@ export default class TurnHandler {
 		}
 	}
 
-	private runOnRoundEnd(board: BoardState) {
+	private static runOnRoundEnd(board: BoardState) {
 		const ids: EntityTypeID[] = Object.values(EntityTypeID).filter((key) =>
 			isNaN(Number(EntityTypeID[key as unknown as number])),
 		) as EntityTypeID[];
