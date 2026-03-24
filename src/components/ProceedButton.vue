@@ -14,5 +14,16 @@ function proceed() {
 <style lang="css" scoped>
 .proceed-button {
 	border: 2px solid black;
+	width: 100%;
+	margin-top: 1em;
+	padding: 1em;
+	background-image: linear-gradient(35deg, #ee8811, #ff9922);
+	transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+	cursor: pointer;
+
+	&:hover {
+		/* legacy compatibility be damned */
+		scale: 1.1;
+	}
 }
 </style>
