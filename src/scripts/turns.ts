@@ -1,6 +1,10 @@
+import { computed, ref, type ComputedRef } from 'vue';
 import type { BoardState } from './board';
 import { EntityTypeID } from './entities/entity';
 import game from './game';
+
+// Exists solely for fixing the god damn rendering bug.
+export const turnsPassed = ref(0);
 
 export enum TurnStatusID {
 	Preview = -2, // Likely to end up unused, but would be used for level previews.
@@ -26,6 +30,7 @@ export default class TurnHandler {
 			this.status = TurnStatusID.EnemyTurn;
 			console.log('Proceeding: Running onEnemyTurnStart handlers.');
 			TurnHandler.runOnEnemyTurnStart(game.value.boardState);
+			turnsPassed.value++;
 		} else if (this.status === TurnStatusID.EnemyTurn) {
 			console.log('Proceeding: Running onRoundEnd handlers.');
 			TurnHandler.runOnRoundEnd(game.value.boardState);
@@ -33,6 +38,7 @@ export default class TurnHandler {
 			this.status = TurnStatusID.PlayerTurn;
 			console.log('Proceeding: Running onPlayerTurnStart handlers.');
 			TurnHandler.runOnPlayerTurnStart(game.value.boardState);
+			turnsPassed.value++;
 		}
 	}
 

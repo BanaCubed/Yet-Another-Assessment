@@ -28,4 +28,4 @@ declare global {
 	}
 }
 
-export default window.game = ref(gameState) as Ref<GameState>;
+export default window.game = ref<GameState>(gameState) as Ref<GameState>;

@@ -2,6 +2,7 @@
 import BoardCell from './BoardCell.vue';
 import type { BoardState } from '@/scripts/board';
 import ProceedButton from './ProceedButton.vue';
+import { turnsPassed } from '@/scripts/turns';
 
 const props = defineProps<{
 	state: BoardState;
@@ -20,6 +21,7 @@ const props = defineProps<{
 					<BoardCell
 						:entities="state.gatherEntitiesOnTile({ x: row, y: col })"
 						:location="{ x: row, y: col }"
+						:turn-number="turnsPassed"
 					/>
 				</div>
 			</div>
