@@ -25,19 +25,19 @@ export default class TurnHandler {
 		console.log('Proceeding');
 		if (this.status === TurnStatusID.PlayerTurn) {
 			console.log('Proceeding: Running onPlayerTurnEnd handlers.');
-			TurnHandler.runOnPlayerTurnEnd(game.value.boardState);
+			TurnHandler.runOnPlayerTurnEnd(game.boardState.value);
 
 			this.status = TurnStatusID.EnemyTurn;
 			console.log('Proceeding: Running onEnemyTurnStart handlers.');
-			TurnHandler.runOnEnemyTurnStart(game.value.boardState);
+			TurnHandler.runOnEnemyTurnStart(game.boardState.value);
 			turnsPassed.value++;
 		} else if (this.status === TurnStatusID.EnemyTurn) {
 			console.log('Proceeding: Running onRoundEnd handlers.');
-			TurnHandler.runOnRoundEnd(game.value.boardState);
+			TurnHandler.runOnRoundEnd(game.boardState.value);
 
 			this.status = TurnStatusID.PlayerTurn;
 			console.log('Proceeding: Running onPlayerTurnStart handlers.');
-			TurnHandler.runOnPlayerTurnStart(game.value.boardState);
+			TurnHandler.runOnPlayerTurnStart(game.boardState.value);
 			turnsPassed.value++;
 		}
 	}

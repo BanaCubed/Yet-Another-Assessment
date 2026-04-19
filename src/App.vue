@@ -4,7 +4,7 @@ import game from './scripts/game';
 </script>
 
 <template>
-	<LevelBoard :state="game.boardState" id="game-board" />
+	<LevelBoard :state="game.boardState.value" id="game-board" />
 </template>
 
 <style lang="css" scoped>

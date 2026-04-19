@@ -24,6 +24,8 @@ export default class Entity {
 	public location: CoordinatePair = CoordinatePairZero;
 	/** Whether this entity should be cleaned up on the next turn proceeding. */
 	public markForDestruction: boolean = false;
+	/** A callback function that is called when the entity is clicked/tapped on on the game board. */
+	public callback?: () => void;
 
 	constructor(coordinates?: CoordinatePair) {
 		this.location = coordinates ?? { x: 0, y: 0 };
@@ -32,7 +34,7 @@ export default class Entity {
 	/**
 	 * Renders the entity using its current status and such.
 	 */
-	public computedRender: ComputedRef<JSX.Element> = computed(() => entityFallbackRenderer);
+	public renderFunc: () => JSX.Element = () => entityFallbackRenderer;
 
 	/**
 	 * Moves the current entity along the board by a specified value.

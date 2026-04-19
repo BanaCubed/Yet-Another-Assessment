@@ -10,10 +10,10 @@ export default class PlayerEntity extends Entity {
 		super(coordinates);
 		this.entityType = EntityTypeID.Player;
 
-		this.computedRender = computed(() => <div>P</div>);
+		this.renderFunc = () => <div>P</div>;
 	}
 
 	public onPlayerTurnEnd?: EntityEventHandler | undefined = () => {
-		this.computedRender = computed(() => <div>P2</div>);
+		this.renderFunc = () => <div>P2</div>;
 	};
 }

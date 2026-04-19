@@ -8,11 +8,12 @@ import type { JSX } from 'vue/jsx-runtime';
  * but can be used to indicate to the player otherwise hidden information.
  */
 export default class OverlayEntity extends Entity {
-	constructor(coordinates: CoordinatePair, display: () => JSX.Element) {
+	constructor(coordinates: CoordinatePair, display: () => JSX.Element, callback?: () => void) {
 		super(coordinates);
 		this.entityType = EntityTypeID.Overlay;
 
-		this.computedRender = computed(display);
+		this.renderFunc = display;
+		this.callback = callback;
 	}
 
 	public onPlayerTurnEnd?: EntityEventHandler | undefined = () => {

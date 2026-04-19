@@ -1,5 +1,5 @@
 <template>
-	<component class="entity-render" />
+	<component class="entity-render" :is="display" />
 </template>
 
 <script setup lang="ts">

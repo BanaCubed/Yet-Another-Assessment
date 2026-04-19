@@ -7,7 +7,7 @@
 import game from '@/scripts/game';
 
 function proceed() {
-	game.value.turnHandler.proceed();
+	game.turnHandler.value.proceed();
 }
 </script>
 

@@ -7,23 +7,20 @@ import type { JSX } from 'vue/jsx-runtime';
 const props = defineProps<{
 	entities: Entity[];
 	location: CoordinatePair;
-	turnNumber: number;
 }>();
 
 const Renderer: ComputedRef<JSX.Element> = computed(() => {
-	props.turnNumber; // reactivity hack
-
-	const functionRenderers: ComputedRef<JSX.Element>[] = [];
+	const renderRefs: Array<() => JSX.Element> = [];
 	for (let i = 0; i < props.entities.length; i++) {
 		const entity = props.entities[i];
 		// Using a fallback of <></> in case the other fallback of <>???</> doesn't work
-		functionRenderers.push(entity?.computedRender ?? computed(() => <></>));
+		renderRefs.push(entity?.renderFunc ?? (() => <></>));
 	}
 
 	return (
 		<>
-			{functionRenderers.map((El) => (
-				<div class="entity-render">{El}</div>
+			{renderRefs.map((El) => (
+				<div class="entity-render">{El()}</div>
 			))}
 		</>
 	);

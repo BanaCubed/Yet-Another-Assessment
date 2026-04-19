@@ -1,4 +1,4 @@
-import { ref, type Ref } from 'vue';
+import { computed, ref, type ComputedRef, type Ref } from 'vue';
 import { BoardState } from './board';
 import TurnHandler, { TurnStatusID } from './turns';
 
@@ -9,23 +9,23 @@ import TurnHandler, { TurnStatusID } from './turns';
  */
 export interface GameState {
 	/** The state of the current board. */
-	boardState: BoardState;
+	boardState: Ref<BoardState>;
 	/** The current turn handler. Exists outside of boardState to be quirky. */
-	turnHandler: TurnHandler;
+	turnHandler: Ref<TurnHandler>;
 }
 
 /**
  * Object containing all information about the game's current state.
  */
 const gameState: GameState = {
-	boardState: new BoardState({ x: 5, y: 5 }),
-	turnHandler: new TurnHandler(),
+	boardState: ref(new BoardState({ x: 5, y: 5 })),
+	turnHandler: ref(new TurnHandler()),
 };
 
 declare global {
 	interface Window {
-		game: Ref<GameState>;
+		game: GameState;
 	}
 }
 
-export default window.game = ref<GameState>(gameState) as Ref<GameState>;
+export default window.game = gameState;
