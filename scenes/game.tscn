@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://byeqwf43w3kvg"]
 
-[ext_resource type="PackedScene" uid="uid://cwpofugsxoj20" path="res://scenes/level.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cwpofugsxoj20" path="res://scenes/level_control.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://b82h8pjlys5td" path="res://scenes/background.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node2D" unique_id=1877966946]
+texture_filter = 3
 
-[node name="Level" parent="." unique_id=1593966462 instance=ExtResource("1_uwrxv")]
+[node name="LevelControl" parent="." unique_id=1593966462 instance=ExtResource("1_uwrxv")]
+
+[node name="Background" parent="." unique_id=1741373638 instance=ExtResource("2_yqjtg")]
+z_index = -1

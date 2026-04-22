@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://sptwcai31qki"]
+
+[ext_resource type="Texture2D" uid="uid://b7kce7kbkb8cf" path="res://sprites/entity_default.png" id="1_6e8rh"]
+[ext_resource type="Texture2D" uid="uid://c6dhk4linfptb" path="res://sprites/icon_default.png" id="2_gr72c"]
+
+[node name="Entity" type="Control" unique_id=1622537750]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 0.3199978
+
+[node name="EntitySprite" type="TextureRect" parent="." unique_id=1984680066]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("1_6e8rh")
+
+[node name="ActionIndicator" type="TextureRect" parent="." unique_id=123942407]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 3.6800022
+offset_right = 8.0
+offset_bottom = 19.680002
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(8, 8)
+texture = ExtResource("2_gr72c")

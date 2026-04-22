@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cwpofugsxoj20"]
+
+[ext_resource type="PackedScene" uid="uid://5jb47hveksoo" path="res://scenes/grid_tile.tscn" id="1_b700e"]
+[ext_resource type="PackedScene" uid="uid://c2q5wem18iu8j" path="res://scenes/internal_box_shadow.tscn" id="2_8u02k"]
+
+[node name="LevelControl" type="Control" unique_id=239553227]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="InternalBoxShadow" parent="." unique_id=941893857 instance=ExtResource("2_8u02k")]
+layout_mode = 1
+border_color = Color(0.7905897, 0.21802102, 0.3703063, 1)
+
+[node name="Grid" type="VBoxContainer" parent="." unique_id=922320993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GridRow" type="HBoxContainer" parent="Grid" unique_id=811308446]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="GridTile" parent="Grid/GridRow" unique_id=590066390 instance=ExtResource("1_b700e")]
+layout_mode = 2
