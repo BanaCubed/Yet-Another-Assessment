@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs334xungkoq5"
-path="res://.godot/imported/entity_wormSprite.png-b062377b27ad1a02b573a475246ed04c.ctex"
+uid="uid://df318cm7y50fv"
+path="res://.godot/imported/entity_playerSprite.png-db4386efba60973efdb50b21375743d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/entities/entity_wormSprite.png"
-dest_files=["res://.godot/imported/entity_wormSprite.png-b062377b27ad1a02b573a475246ed04c.ctex"]
+source_file="res://game_data/entity_playerSprite.png"
+dest_files=["res://.godot/imported/entity_playerSprite.png-db4386efba60973efdb50b21375743d1.ctex"]
 
 [params]
 

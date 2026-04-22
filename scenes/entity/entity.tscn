@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://rqho8pyo2v3r"]
-
-[ext_resource type="Texture2D" uid="uid://b7kce7kbkb8cf" path="res://assets/entities/entity_defaultSprite.png" id="1_6e8rh"]
-[ext_resource type="Script" uid="uid://c14pl8ly3k4sp" path="res://scenes/entity/entity.gd" id="2_gr72c"]
-
-[node name="Entity" type="Sprite2D" unique_id=2136275863]
-texture_filter = 1
-texture = ExtResource("1_6e8rh")
-script = ExtResource("2_gr72c")

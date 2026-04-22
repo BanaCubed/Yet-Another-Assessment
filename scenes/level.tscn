@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://cwpofugsxoj20"]
 
-[ext_resource type="PackedScene" uid="uid://rqho8pyo2v3r" path="res://scenes/entity/entity.tscn" id="1_2q6dc"]
-
 [node name="Level" type="Node2D" unique_id=1593966462]
 
 [node name="EntityControl" type="Control" parent="." unique_id=1040823744]
@@ -17,5 +15,3 @@ offset_right = 320.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Entity" parent="EntityControl" unique_id=1241019086 instance=ExtResource("1_2q6dc")]
