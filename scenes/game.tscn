@@ -1,12 +1,27 @@
 [gd_scene format=3 uid="uid://byeqwf43w3kvg"]
 
-[ext_resource type="PackedScene" uid="uid://cwpofugsxoj20" path="res://scenes/level_control.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://b82h8pjlys5td" path="res://scenes/background.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cwpofugsxoj20" path="res://scenes/level.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_iywne"]
+[ext_resource type="Script" uid="uid://dq4lpkdncutpi" path="res://scripts/entities/entity_data.gd" id="3_p57ef"]
+[ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="4_u5sy4"]
+[ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="5_gee14"]
+
+[sub_resource type="Resource" id="Resource_0tnpc"]
+resource_local_to_scene = true
+script = ExtResource("3_p57ef")
+entity = ExtResource("4_u5sy4")
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_vtaks"]
+resource_local_to_scene = true
+script = ExtResource("5_gee14")
+size = Vector2i(5, 5)
+background = ExtResource("2_iywne")
+entities = Array[ExtResource("3_p57ef")]([SubResource("Resource_0tnpc")])
+metadata/_custom_type_script = "uid://bt2wenhrv0k8w"
 
 [node name="Game" type="Node2D" unique_id=1877966946]
 texture_filter = 3
 
-[node name="LevelControl" parent="." unique_id=1593966462 instance=ExtResource("1_uwrxv")]
-
-[node name="Background" parent="." unique_id=1741373638 instance=ExtResource("2_yqjtg")]
-z_index = -1
+[node name="Level" parent="." unique_id=1593966462 instance=ExtResource("1_uwrxv")]
+level_data = SubResource("Resource_vtaks")

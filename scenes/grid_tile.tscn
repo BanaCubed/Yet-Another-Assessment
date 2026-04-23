@@ -2,29 +2,36 @@
 
 [ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="1_0v2c5"]
 [ext_resource type="PackedScene" uid="uid://sptwcai31qki" path="res://scenes/entity.tscn" id="1_wprxu"]
-[ext_resource type="Script" uid="uid://csq0q3n8e8gwj" path="res://scripts/grid_tile.gd" id="2_uvppq"]
+[ext_resource type="Script" uid="uid://csq0q3n8e8gwj" path="res://scripts/levels/grid_tile.gd" id="2_uvppq"]
 
-[node name="GridTile" type="Panel" unique_id=590066390]
-texture_filter = 3
+[node name="GridTile" type="Control" unique_id=1965484559]
 custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-pivot_offset = Vector2(20, 20)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("1_0v2c5")
 script = ExtResource("2_uvppq")
 
-[node name="Entity" parent="." unique_id=1622537750 instance=ExtResource("1_wprxu")]
+[node name="Panel" type="PanelContainer" parent="." unique_id=1573005161]
+texture_filter = 3
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -0.1599989
-offset_bottom = 0.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_0v2c5")
 
-[node name="SelectionButton" type="TouchScreenButton" parent="." unique_id=1609853551]
+[node name="Entity" parent="Panel" unique_id=1622537750 instance=ExtResource("1_wprxu")]
+visible = false
+layout_mode = 2

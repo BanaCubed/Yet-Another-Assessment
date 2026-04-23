@@ -3,9 +3,10 @@
 [sub_resource type="Gradient" id="Gradient_vsxua"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.8069106, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+colors = PackedColorArray(0.7921569, 0.21960784, 0.36862746, 0, 0.7921569, 0.21960784, 0.36862746, 1)
 
 [resource]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_vsxua")
 width = 160
 height = 90

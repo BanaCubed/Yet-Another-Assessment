@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cwpofugsxoj20"]
+
+[ext_resource type="PackedScene" uid="uid://5jb47hveksoo" path="res://scenes/grid_tile.tscn" id="1_b700e"]
+[ext_resource type="Script" uid="uid://by8jvcqpo38fn" path="res://scripts/levels/level.gd" id="1_w8frs"]
+[ext_resource type="Resource" uid="uid://m4p63jpptfxt" path="res://resources/levels/level_001.tres" id="2_2r41h"]
+[ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_ppgk2"]
+[ext_resource type="Texture2D" uid="uid://co4ifbiebxrvl" path="res://resources/internal_box_shadow_gradient.tres" id="7_klq6b"]
+
+[node name="Level" type="Control" unique_id=239553227]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("1_w8frs")
+level = ExtResource("2_2r41h")
+
+[node name="Grid" type="VBoxContainer" parent="." unique_id=922320993]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GridRow" type="HBoxContainer" parent="Grid" unique_id=811308446]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="GridTile" parent="Grid/GridRow" unique_id=590066390 instance=ExtResource("1_b700e")]
+layout_mode = 2
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1135433016]
+z_index = -1
+texture = ExtResource("2_ppgk2")
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1156829617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_klq6b")

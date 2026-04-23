@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntityType" format=3 uid="uid://lvnjrefjcuvt"]
+
+[ext_resource type="Script" uid="uid://b676twyihh4ye" path="res://scripts/entities/entity_type.gd" id="1_2a3eb"]
+[ext_resource type="Texture2D" uid="uid://df318cm7y50fv" path="res://sprites/entity_person.png" id="2_mbcbc"]
+
+[resource]
+resource_name = "EntityType Person"
+script = ExtResource("1_2a3eb")
+name = &"person"
+sprite = ExtResource("2_mbcbc")
+movement_points = 3
+metadata/_custom_type_script = "uid://b676twyihh4ye"
