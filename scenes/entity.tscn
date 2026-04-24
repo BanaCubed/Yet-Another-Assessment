@@ -1,20 +1,23 @@
 [gd_scene format=3 uid="uid://sptwcai31qki"]
 
 [ext_resource type="Texture2D" uid="uid://b7kce7kbkb8cf" path="res://sprites/entity_default.png" id="1_6e8rh"]
+[ext_resource type="Script" uid="uid://dxo44htxtfl3u" path="res://scripts/entity.gd" id="1_m0cyi"]
+[ext_resource type="Resource" uid="uid://dqdhqyhmt3b4t" path="res://resources/entities/default.tres" id="2_51v4c"]
 [ext_resource type="Texture2D" uid="uid://c6dhk4linfptb" path="res://sprites/icon_default.png" id="2_gr72c"]
 
 [node name="Entity" type="Control" unique_id=1622537750]
 texture_filter = 3
 layout_mode = 3
 anchors_preset = 0
-offset_bottom = 0.3199978
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_m0cyi")
+entity_type = ExtResource("2_51v4c")
 
 [node name="EntitySprite" type="TextureRect" parent="." unique_id=1984680066]
 layout_mode = 0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 32.0
+offset_bottom = 32.0
 pivot_offset = Vector2(16, 16)
 texture = ExtResource("1_6e8rh")
 

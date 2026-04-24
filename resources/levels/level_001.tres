@@ -3,9 +3,18 @@
 [ext_resource type="Script" uid="uid://dq4lpkdncutpi" path="res://scripts/entities/entity_data.gd" id="1_saulk"]
 [ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="1_tp5ye"]
 [ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="2_tp5ye"]
+[ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="3_q5jg5"]
+
+[sub_resource type="Resource" id="Resource_b0ccj"]
+resource_local_to_scene = true
+script = ExtResource("1_saulk")
+entity = ExtResource("3_q5jg5")
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_tp5ye")
 size = Vector2i(12, 5)
 background = ExtResource("1_tp5ye")
+entities = Array[ExtResource("1_saulk")]([SubResource("Resource_b0ccj")])
 metadata/_custom_type_script = "uid://bt2wenhrv0k8w"

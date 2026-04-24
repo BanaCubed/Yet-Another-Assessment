@@ -12,7 +12,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_uvppq")
 
-[node name="Panel" type="PanelContainer" parent="." unique_id=1573005161]
+[node name="Panel" type="Panel" parent="." unique_id=1496461501]
 texture_filter = 3
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
@@ -34,4 +34,15 @@ theme = ExtResource("1_0v2c5")
 
 [node name="Entity" parent="Panel" unique_id=1622537750 instance=ExtResource("1_wprxu")]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
