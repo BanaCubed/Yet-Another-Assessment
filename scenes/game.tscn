@@ -6,22 +6,25 @@
 [ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="4_u5sy4"]
 [ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="5_gee14"]
 
-[sub_resource type="Resource" id="Resource_0tnpc"]
+[sub_resource type="Resource" id="Resource_iywne"]
 resource_local_to_scene = true
 script = ExtResource("3_p57ef")
 entity = ExtResource("4_u5sy4")
 metadata/_custom_type_script = "uid://dq4lpkdncutpi"
 
-[sub_resource type="Resource" id="Resource_vtaks"]
+[sub_resource type="Resource" id="Resource_p57ef"]
 resource_local_to_scene = true
 script = ExtResource("5_gee14")
-size = Vector2i(5, 5)
+size = Vector2i(12, 5)
 background = ExtResource("2_iywne")
-entities = Array[ExtResource("3_p57ef")]([SubResource("Resource_0tnpc")])
+entities = Array[ExtResource("3_p57ef")]([SubResource("Resource_iywne")])
 metadata/_custom_type_script = "uid://bt2wenhrv0k8w"
 
-[node name="Game" type="Node2D" unique_id=1877966946]
+[node name="Game" type="Control" unique_id=1198991975]
 texture_filter = 3
+layout_mode = 3
+anchors_preset = 0
 
 [node name="Level" parent="." unique_id=1593966462 instance=ExtResource("1_uwrxv")]
-level_data = SubResource("Resource_vtaks")
+layout_mode = 0
+level = SubResource("Resource_p57ef")

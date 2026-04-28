@@ -30,9 +30,10 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_0v2c5")
 
-[node name="Entity" parent="Panel" unique_id=1622537750 instance=ExtResource("1_wprxu")]
+[node name="Entity" parent="." unique_id=1622537750 instance=ExtResource("1_wprxu")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -46,3 +47,6 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]

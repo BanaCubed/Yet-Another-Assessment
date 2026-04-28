@@ -40,6 +40,6 @@ func _process(_delta: float) -> void:
 		var pos := entity.position
 		var entity_type := entity.entity
 		
-		var target_node: Entity = get_node("Grid/GridRow%s/GridTile%s/Panel/Entity" % [pos.y, pos.x])
+		var target_node: Entity = get_node("Grid/GridRow%s/GridTile%s/Entity" % [pos.y, pos.x])
 		target_node.entity_type = entity_type
 		target_node.visible = true
