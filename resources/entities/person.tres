@@ -6,7 +6,7 @@
 [resource]
 resource_name = "EntityType Person"
 script = ExtResource("1_2a3eb")
-name = &"person"
+name = &"STICKMAN"
 sprite = ExtResource("2_mbcbc")
-movement_points = 3
+movement_type = 1
 metadata/_custom_type_script = "uid://b676twyihh4ye"

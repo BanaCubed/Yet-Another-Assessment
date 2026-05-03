@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://dq4lpkdncutpi" path="res://scripts/entities/entity_data.gd" id="1_saulk"]
 [ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="1_tp5ye"]
 [ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="2_tp5ye"]
-[ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="3_q5jg5"]
+[ext_resource type="Resource" uid="uid://bdw23ynt8g8ru" path="res://resources/entities/horse.tres" id="3_q5jg5"]
+[ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="4_b0ccj"]
+[ext_resource type="Resource" uid="uid://dqdhqyhmt3b4t" path="res://resources/entities/default.tres" id="5_mtmhb"]
 
 [sub_resource type="Resource" id="Resource_b0ccj"]
 resource_local_to_scene = true
@@ -11,10 +13,25 @@ script = ExtResource("1_saulk")
 entity = ExtResource("3_q5jg5")
 metadata/_custom_type_script = "uid://dq4lpkdncutpi"
 
+[sub_resource type="Resource" id="Resource_mtmhb"]
+resource_local_to_scene = true
+script = ExtResource("1_saulk")
+entity = ExtResource("4_b0ccj")
+position = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_82dld"]
+resource_local_to_scene = true
+script = ExtResource("1_saulk")
+entity = ExtResource("5_mtmhb")
+position = Vector2i(0, 2)
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
 [resource]
 resource_local_to_scene = true
+resource_name = "Level 001"
 script = ExtResource("2_tp5ye")
-size = Vector2i(12, 5)
+size = Vector2i(3, 3)
 background = ExtResource("1_tp5ye")
-entities = Array[ExtResource("1_saulk")]([SubResource("Resource_b0ccj")])
+entities = Array[ExtResource("1_saulk")]([SubResource("Resource_b0ccj"), SubResource("Resource_mtmhb"), SubResource("Resource_82dld")])
 metadata/_custom_type_script = "uid://bt2wenhrv0k8w"

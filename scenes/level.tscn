@@ -4,15 +4,21 @@
 [ext_resource type="Script" uid="uid://by8jvcqpo38fn" path="res://scripts/levels/level.gd" id="1_w8frs"]
 [ext_resource type="Resource" uid="uid://m4p63jpptfxt" path="res://resources/levels/level_001.tres" id="2_2r41h"]
 [ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_ppgk2"]
+[ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="6_2r41h"]
 [ext_resource type="Texture2D" uid="uid://co4ifbiebxrvl" path="res://resources/border_gradient.tres" id="7_klq6b"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Level" type="Control" unique_id=239553227]
+texture_filter = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 script = ExtResource("1_w8frs")
-level = ExtResource("2_2r41h")
+level_data = ExtResource("2_2r41h")
 
 [node name="Grid" type="VBoxContainer" parent="." unique_id=922320993]
 visible = false
@@ -46,3 +52,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_klq6b")
+
+[node name="ActionsBar" type="HBoxContainer" parent="." unique_id=783827144]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = -8.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="EntityTypeNameHolder" type="Panel" parent="ActionsBar" unique_id=485678668]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme = ExtResource("6_2r41h")
+
+[node name="EntityTypeNameDisplay" type="Label" parent="ActionsBar/EntityTypeNameHolder" unique_id=1635201465]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unknown Entity"
+label_settings = SubResource("LabelSettings_2r41h")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MoveAbilityButton" type="Button" parent="ActionsBar" unique_id=2105404365]
+visible = false
+layout_mode = 2
+text = "MOVE"
+
+[connection signal="selected" from="Grid/GridRow/GridTile" to="." method="_on_grid_tile_selected"]
+[connection signal="pressed" from="ActionsBar/MoveAbilityButton" to="." method="_on_move_ability_button_pressed"]

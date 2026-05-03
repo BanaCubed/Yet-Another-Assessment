@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_weprx")
-name = &"default"
+name = &"UNKNOWN ENTITY"
 sprite = ExtResource("2_kw01r")
 metadata/_custom_type_script = "uid://b676twyihh4ye"
