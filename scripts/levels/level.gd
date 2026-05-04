@@ -86,10 +86,15 @@ func _on_grid_tile_selected(coordinates: Vector2i) -> void:
 
 func _on_move_ability_button_pressed() -> void:
 	awaiting_ability_tile_selection = Abilities.MOVE
+	var entity_tiles: Array[Vector2i] = []
+	for entity in level_data.entities:
+		entity_tiles.append(entity.position)
+	
 	var legal_tiles = Movement.get_valid_tiles(
 			selected_entity.movement_type,
 			level_data.size,
 			selected_coordinates,
+			entity_tiles,
 	)
 	for tile in legal_tiles:
 		var node: GridTile = get_node("Grid/GridRow%s/GridTile%s" % [tile.y, tile.x])

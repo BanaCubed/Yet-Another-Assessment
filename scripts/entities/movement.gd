@@ -28,6 +28,7 @@ static func get_valid_tiles(
 		type: MovementType,
 		grid_size: Vector2i,
 		origin: Vector2i,
+		off_limits: Array[Vector2i],
 ) -> Array[Vector2i]:
 	var tiles_collector: Array[Vector2i] = []
 	match type:
@@ -44,7 +45,8 @@ static func get_valid_tiles(
 						to_check.x < grid_size.x and
 						to_check.x >= 0 and
 						to_check.y < grid_size.y and
-						to_check.y >= 0
+						to_check.y >= 0 and
+						to_check not in off_limits
 				):
 					tiles_collector.append(to_check)
 			
