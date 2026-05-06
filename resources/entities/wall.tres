@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntityType" format=3 uid="uid://dyipoqpc1n8en"]
+
+[ext_resource type="Script" uid="uid://b676twyihh4ye" path="res://scripts/entities/entity_type.gd" id="1_bn4pi"]
+[ext_resource type="Texture2D" uid="uid://b3mg2qusg1buh" path="res://sprites/entities/wall.png" id="2_bdkkq"]
+
+[resource]
+script = ExtResource("1_bn4pi")
+name = &"WALL"
+sprite = ExtResource("2_bdkkq")
+metadata/_custom_type_script = "uid://b676twyihh4ye"

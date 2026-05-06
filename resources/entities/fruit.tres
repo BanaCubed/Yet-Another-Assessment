@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntityType" format=3 uid="uid://c4pt0rgt1kgqq"]
+
+[ext_resource type="Script" uid="uid://b676twyihh4ye" path="res://scripts/entities/entity_type.gd" id="1_ib6jq"]
+[ext_resource type="Texture2D" uid="uid://dykj2mqo3ylll" path="res://sprites/entities/fruit.png" id="2_wqyhm"]
+
+[resource]
+script = ExtResource("1_ib6jq")
+name = &"DELICIOUS FRUIT"
+sprite = ExtResource("2_wqyhm")
+metadata/_custom_type_script = "uid://b676twyihh4ye"

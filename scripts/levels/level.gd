@@ -23,19 +23,19 @@ var awaiting_ability_tile_selection := Abilities.NONE
 #region Grid Preperation
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var rows := level_data.size.y
-	var cols := level_data.size.x
+	var level_y := level_data.size.y
+	var level_x := level_data.size.x
 	
 	# Populating the grid.
 	var grid_tile: GridTile = $Grid/GridRow/GridTile
 	var grid_row: HBoxContainer = $Grid/GridRow
 	var grid_full: VBoxContainer = $Grid
 	
-	for i in range(rows):
+	for i in range(level_y):
 		var new_row: HBoxContainer = grid_row.duplicate()
 		new_row.name = "GridRow%s" % [i]
 		new_row.remove_child(new_row.get_child(0))
-		for j in range(cols):
+		for j in range(level_x):
 			var new_tile: GridTile = grid_tile.duplicate()
 			new_tile.name = "GridTile%s" % [j]
 			new_tile.tile_coordinates = Vector2i(j, i)
@@ -47,21 +47,21 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var rows := level_data.size.y
-	var cols := level_data.size.x
+	var level_y := level_data.size.y
+	var level_x := level_data.size.x
 	
 	# Since the entities might change during the level, their logic should be here.
 	var entities := level_data.entities
 	
-	for i in range(cols):
-		for j in range(rows):
+	for i in range(level_x):
+		for j in range(level_y):
 			var target_node: Entity = get_node("Grid/GridRow%s/GridTile%s/Entity" % [j, i])
 			target_node.visible = false
 	
 	for entity in entities:
 		var pos := entity.position
 		var entity_type := entity.entity
-		if pos.x < rows and pos.x >= 0 and pos.y < cols and pos.y >= 0:
+		if pos.x < level_x and pos.x >= 0 and pos.y < level_y and pos.y >= 0:
 			var target_node: Entity = get_node("Grid/GridRow%s/GridTile%s/Entity" % [pos.y, pos.x])
 			target_node.entity_type = entity_type
 			target_node.visible = true
@@ -70,11 +70,11 @@ func _process(_delta: float) -> void:
 
 #region Input Detection
 func _on_grid_tile_selected(coordinates: Vector2i) -> void:
-	var rows := level_data.size.y
-	var cols := level_data.size.x
+	var level_y := level_data.size.y
+	var level_x := level_data.size.x
 	
-	for i in range(cols):
-		for j in range(rows):
+	for i in range(level_x):
+		for j in range(level_y):
 			var node: GridTile = get_node("Grid/GridRow%s/GridTile%s" % [j, i])
 			node.deselect()
 	
