@@ -1,16 +1,23 @@
 class_name GridTile extends Control
+## Control node representing a tile in the level grid.
+## Not particularly useful outside of its designated scene.
 
 
+## Signal emitted when this tile gets selected.
 signal selected(coordinates: Vector2i)
+
 
 ## The type of entity being rendered on this grid tile.
 ## It may be beneficial in future to move entities off the grid tile while they move.
 @export var entity_type: EntityType
 
-## The current progress of the easing of the selection animation for panels.
-var tween_panel: Tween
+
 ## The coordinates at which this grid tile is located.
 var tile_coordinates := Vector2i(0, 0)
+
+
+## The current progress of the easing of the selection animation for panels.
+var tween_panel: Tween
 
 
 # I'm not sure why overriding _gui_input() doesn't work.
@@ -21,6 +28,9 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 		if not event.pressed:
 			return
 		if $ActionIndicator.visible:
+			# This just avoids running the rotation animation when it shouldn't be.
+			# Honestly it might be better to move this to a public variable that's set
+			# by the level itself but that isn't really an issue (yet).
 			selected.emit(tile_coordinates)
 			return
 		select()
@@ -30,6 +40,7 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 ## Selects this grid tile.
 func select() -> void:
 	selected.emit(tile_coordinates)
+
 	if tween_panel:
 		tween_panel.kill()
 	tween_panel = create_tween()

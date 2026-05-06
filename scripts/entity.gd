@@ -1,13 +1,10 @@
 class_name Entity extends Control
+## Control node representing an entity.
+## Automatically updates itself based on the entity_type property.
 
 
 ## The type of entity to render.
 @export var entity_type: EntityType
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

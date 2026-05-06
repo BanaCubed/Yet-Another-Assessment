@@ -1,4 +1,6 @@
 class_name EntityData extends Resource
+## Resource containing the information regarding a specific instance of an entity.
+
 
 ## The type of entity that this entity is.
 @export var entity: EntityType

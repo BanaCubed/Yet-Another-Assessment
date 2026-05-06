@@ -1,4 +1,5 @@
 class_name Movement extends Object
+## Generic class ussed more as a namespace to contain movement-related functions.
 
 
 ## Enum of all movement types accepted.
@@ -8,6 +9,7 @@ enum MovementType {
 	DIAGONAL,
 	HORSE,
 }
+
 
 ## Constant containing the offset vectors of the HORSE movement type.
 const HORSE_VECTORS: Array[Vector2i] = [
@@ -20,6 +22,8 @@ const HORSE_VECTORS: Array[Vector2i] = [
 	Vector2i(1, 2),
 	Vector2i(2, 1),
 ]
+
+
 ## Constant containing the movement vectors of the ORTHOGONAL movement type.
 const ORTHOGONAL_VECTORS: Array[Vector2i] = [
 	Vector2i(0, 1),
@@ -27,6 +31,8 @@ const ORTHOGONAL_VECTORS: Array[Vector2i] = [
 	Vector2i(1, 0),
 	Vector2i(-1, 0),
 ]
+
+
 ## Constant containing the movement vectors of the DIAGONAL movement type.
 const DIAGONAL_VECTORS: Array[Vector2i] = [
 	Vector2i(1, 1),
@@ -36,6 +42,7 @@ const DIAGONAL_VECTORS: Array[Vector2i] = [
 ]
 
 
+#region Valid Tiles
 ## Collects the valid tiles that an entity would be able to go to.
 ## Currently does not support walls of any kind.
 static func get_valid_tiles(
@@ -83,3 +90,4 @@ static func get_valid_tiles(
 					tiles_collector.append(to_check)
 			
 	return tiles_collector
+#endregion

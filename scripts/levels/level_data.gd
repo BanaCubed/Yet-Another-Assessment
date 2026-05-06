@@ -1,4 +1,5 @@
 class_name LevelData extends Resource
+## Resource containing all the information stored for a level.
 
 
 ## The size of the level. Small values may behave strangely.

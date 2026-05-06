@@ -1,4 +1,5 @@
 class_name EntityType extends Resource
+## Resource containing all the information regarding a type of entity.
 
 
 ## The name of this entity type. Used for interactions from other entities.
