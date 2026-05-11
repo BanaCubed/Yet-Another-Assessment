@@ -17,7 +17,7 @@ enum Abilities {
 ## The coordinates of the currently selected tile on the tile grid.
 var selected_coordinates: Vector2i
 ## The type of the currently selected entity.
-var selected_entity: EntityType
+var selected_entity: EntityData
 
 
 ## Whether the board is currently expecting the player to select a tile to use an ability on.
@@ -103,7 +103,7 @@ func _on_move_ability_button_pressed() -> void:
 		entity_tiles.append(entity.position)
 	
 	var legal_tiles = Movement.get_valid_tiles(
-		selected_entity.movement_type,
+		selected_entity.entity.movement_type,
 		level_data.size,
 		selected_coordinates,
 		entity_tiles,
@@ -121,8 +121,9 @@ func update_actions_bar():
 	tween_actionsbar.set_trans(Tween.TRANS_EXPO)
 	
 	if selected_entity:
-		$ActionsBar/EntityTypeNameHolder/EntityTypeNameDisplay.text = selected_entity.name
-		$ActionsBar/MoveAbilityButton.visible = selected_entity.movement_type != Movement.MovementType.STATIONARY
+		$ActionsBar/EntityTypeNameHolder/EntityTypeNameDisplay.text = selected_entity.entity.name
+		$ActionsBar/EntityTypeNameHolder/EntityStateDisplay.text = Entity.name_from_state_id(selected_entity.state)
+		$ActionsBar/MoveAbilityButton.visible = selected_entity.entity.movement_type != Movement.MovementType.STATIONARY
 		tween_actionsbar.tween_property($ActionsBar, ^"position", Vector2(8.0, 312.0), 0.4)
 	else:
 		tween_actionsbar.tween_property($ActionsBar, ^"position", Vector2(8.0, 400.0), 0.4)
@@ -138,7 +139,7 @@ func select_tile(coordinates: Vector2i) -> void:
 			entity.position.y == selected_coordinates.y and
 			entity.position.x == selected_coordinates.x
 		):
-			selected_entity = entity.entity
+			selected_entity = entity
 	update_actions_bar()
 
 
