@@ -36,12 +36,12 @@ func _ready() -> void:
 	var grid_full: VBoxContainer = $Grid
 	
 	# Populating the level grid.
-	for i in range(level_data.size.y):
+	for i in range(level_data.dimensions.y):
 		var new_row: HBoxContainer = grid_row.duplicate()
 		new_row.name = "GridRow%s" % [i]
 		new_row.remove_child(new_row.get_child(0))
 
-		for j in range(level_data.size.x):
+		for j in range(level_data.dimensions.x):
 			var new_tile: GridTile = grid_tile.duplicate()
 			new_tile.name = "GridTile%s" % [j]
 			new_tile.tile_coordinates = Vector2i(j, i)
@@ -63,15 +63,15 @@ func _process(_delta: float) -> void:
 	# exist anymore or have moved to new tiles, since there is not callback
 	# for either of those cases that directly hides the entities in their tiles
 	# directly.
-	for i in range(level_data.size.x):
-		for j in range(level_data.size.y):
+	for i in range(level_data.dimensions.x):
+		for j in range(level_data.dimensions.y):
 			var target_node: Entity = get_node("Grid/GridRow%s/GridTile%s/Entity" % [j, i])
 			target_node.visible = false
 	
 	for entity in entities:
 		var pos := entity.position
-		var entity_type := entity.entity
-		if pos.x < level_data.size.x and pos.x >= 0 and pos.y < level_data.size.y and pos.y >= 0:
+		var entity_type := entity.type
+		if pos.x < level_data.dimensions.x and pos.x >= 0 and pos.y < level_data.dimensions.y and pos.y >= 0:
 			var target_node: Entity = get_node(
 				"Grid/GridRow%s/GridTile%s/Entity" % [pos.y, pos.x]
 			)
@@ -82,8 +82,8 @@ func _process(_delta: float) -> void:
 
 #region Input Detection
 func _on_grid_tile_selected(coordinates: Vector2i) -> void:
-	for i in range(level_data.size.x):
-		for j in range(level_data.size.y):
+	for i in range(level_data.dimensions.x):
+		for j in range(level_data.dimensions.y):
 			var node: GridTile = get_node("Grid/GridRow%s/GridTile%s" % [j, i])
 			node.deselect()
 	
@@ -103,8 +103,8 @@ func _on_move_ability_button_pressed() -> void:
 		entity_tiles.append(entity.position)
 	
 	var legal_tiles = Movement.get_valid_tiles(
-		selected_entity.entity.movement_type,
-		level_data.size,
+		selected_entity.type.movement_type,
+		level_data.dimensions,
 		selected_coordinates,
 		entity_tiles,
 	)
@@ -121,9 +121,9 @@ func update_actions_bar():
 	tween_actionsbar.set_trans(Tween.TRANS_EXPO)
 	
 	if selected_entity:
-		$ActionsBar/EntityTypeNameHolder/EntityTypeNameDisplay.text = selected_entity.entity.name
+		$ActionsBar/EntityTypeNameHolder/EntityTypeNameDisplay.text = selected_entity.type.name
 		$ActionsBar/EntityTypeNameHolder/EntityStateDisplay.text = Entity.name_from_state_id(selected_entity.state)
-		$ActionsBar/MoveAbilityButton.visible = selected_entity.entity.movement_type != Movement.MovementType.STATIONARY
+		$ActionsBar/MoveAbilityButton.visible = selected_entity.type.movement_type != Movement.MovementType.STATIONARY
 		tween_actionsbar.tween_property($ActionsBar, ^"position", Vector2(8.0, 312.0), 0.4)
 	else:
 		tween_actionsbar.tween_property($ActionsBar, ^"position", Vector2(8.0, 400.0), 0.4)
@@ -167,8 +167,8 @@ func move_to_tile(coordinates: Vector2i) -> void:
 	
 	# Clear action indicators on all tiles, regardless of whether the entity actually moved.
 	# This is because either way the entity gets deselected, and the movement process ends.
-	for i in range(level_data.size.x):
-		for j in range(level_data.size.y):
+	for i in range(level_data.dimensions.x):
+		for j in range(level_data.dimensions.y):
 			var target_node: GridTile = get_node("Grid/GridRow%s/GridTile%s" % [j, i])
 			target_node.clear_action_indicator()
 	

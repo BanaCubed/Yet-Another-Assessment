@@ -4,13 +4,18 @@ class_name Movement extends Object
 
 ## Enum of all movement types accepted.
 enum MovementType {
+	## Disables movement.
 	STATIONARY,
+	## Can move infinitely horizontally *or* vertically, until hitting another entity.
 	ORTHOGONAL,
+	## Can move infinitely diagonally until hitting another entity.
 	DIAGONAL,
+	## Can move suspiciously like a knight from hit game Chess™.
 	HORSE,
 }
 
 
+#region Vector Constants
 ## Constant containing the offset vectors of the HORSE movement type.
 const HORSE_VECTORS: Array[Vector2i] = [
 	Vector2i(-1, -2),
@@ -40,16 +45,17 @@ const DIAGONAL_VECTORS: Array[Vector2i] = [
 	Vector2i(-1, 1),
 	Vector2i(-1, -1),
 ]
+#endregion
 
 
 #region Valid Tiles
 ## Collects the valid tiles that an entity would be able to go to.
 ## Currently does not support walls of any kind.
 static func get_valid_tiles(
-		type: MovementType,
-		grid_size: Vector2i,
-		origin: Vector2i,
-		off_limits: Array[Vector2i],
+	type: MovementType,
+	grid_size: Vector2i,
+	origin: Vector2i,
+	off_limits: Array[Vector2i],
 ) -> Array[Vector2i]:
 	var tiles_collector: Array[Vector2i] = []
 	match type:
@@ -57,11 +63,11 @@ static func get_valid_tiles(
 			for VECTOR in ORTHOGONAL_VECTORS:
 				var to_check = origin + VECTOR
 				while (
-						to_check.x < grid_size.x and
-						to_check.x >= 0 and
-						to_check.y < grid_size.y and
-						to_check.y >= 0 and
-						to_check not in off_limits
+					to_check.x < grid_size.x and
+					to_check.x >= 0 and
+					to_check.y < grid_size.y and
+					to_check.y >= 0 and
+					to_check not in off_limits
 				):
 					tiles_collector.append(to_check)
 					to_check += VECTOR
@@ -69,11 +75,11 @@ static func get_valid_tiles(
 			for VECTOR in DIAGONAL_VECTORS:
 				var to_check = origin + VECTOR
 				while (
-						to_check.x < grid_size.x and
-						to_check.x >= 0 and
-						to_check.y < grid_size.y and
-						to_check.y >= 0 and
-						to_check not in off_limits
+					to_check.x < grid_size.x and
+					to_check.x >= 0 and
+					to_check.y < grid_size.y and
+					to_check.y >= 0 and
+					to_check not in off_limits
 				):
 					tiles_collector.append(to_check)
 					to_check += VECTOR
@@ -81,11 +87,11 @@ static func get_valid_tiles(
 			for VECTOR in HORSE_VECTORS:
 				var to_check = VECTOR + origin
 				if (
-						to_check.x < grid_size.x and
-						to_check.x >= 0 and
-						to_check.y < grid_size.y and
-						to_check.y >= 0 and
-						to_check not in off_limits
+					to_check.x < grid_size.x and
+					to_check.x >= 0 and
+					to_check.y < grid_size.y and
+					to_check.y >= 0 and
+					to_check not in off_limits
 				):
 					tiles_collector.append(to_check)
 			

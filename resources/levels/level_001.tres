@@ -42,6 +42,7 @@ resource_local_to_scene = true
 script = ExtResource("1_saulk")
 entity = ExtResource("6_82dld")
 position = Vector2i(0, 3)
+state = -3
 metadata/_custom_type_script = "uid://dq4lpkdncutpi"
 
 [resource]

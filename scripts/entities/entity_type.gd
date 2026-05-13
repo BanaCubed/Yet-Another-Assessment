@@ -8,3 +8,5 @@ class_name EntityType extends Resource
 @export var sprite: Texture2D
 ## How this entity moves around.
 @export var movement_type: Movement.MovementType
+## The interactions this entity has with other entities.
+@export var interactions: Array[Interaction]

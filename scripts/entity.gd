@@ -5,10 +5,16 @@ class_name Entity extends Control
 
 ## Enum containing the states that an entity can be in.
 enum States {
+	## Disables rendering of the state display text, since it should be irrelevant.
 	STATELESS = 0,
+	## An animal that has not yet eaten a valid food type.
 	HUNGRY = 1,
+	## An animal that has eaten food.
 	SATIATED = 2,
+	## Food that has spoiled.
 	SPOILED = 3,
+	
+	# -- Negative values represent turns until a food entity spoils.
 	SPOILS_IN_1 = -1,
 	SPOILS_IN_2 = -2,
 	SPOILS_IN_3 = -3,
@@ -17,8 +23,12 @@ enum States {
 
 ## The type of entity to render.
 @export var entity_type: EntityType
+## The state of this entity.
+@export var entity_state: States
 
 
+## Converts the enum values into strings representing the state of an entity.
+## This function should probably be in a different file but I cannot think of where else it could go.
 static func name_from_state_id(id: States) -> String:
 	match id:
 		States.HUNGRY:
