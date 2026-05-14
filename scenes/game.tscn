@@ -3,21 +3,55 @@
 [ext_resource type="PackedScene" uid="uid://cwpofugsxoj20" path="res://scenes/level.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_iywne"]
 [ext_resource type="Script" uid="uid://dq4lpkdncutpi" path="res://scripts/entities/entity_data.gd" id="3_p57ef"]
+[ext_resource type="Resource" uid="uid://bdw23ynt8g8ru" path="res://resources/entities/horse.tres" id="4_gee14"]
 [ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="4_u5sy4"]
 [ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="5_gee14"]
+[ext_resource type="Resource" uid="uid://dyipoqpc1n8en" path="res://resources/entities/wall.tres" id="6_0tnpc"]
+[ext_resource type="Resource" uid="uid://c4pt0rgt1kgqq" path="res://resources/entities/fruit.tres" id="7_vtaks"]
+
+[sub_resource type="Resource" id="Resource_lbhrr"]
+resource_local_to_scene = true
+script = ExtResource("3_p57ef")
+type = ExtResource("4_gee14")
+state = 2
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
 
 [sub_resource type="Resource" id="Resource_iywne"]
 resource_local_to_scene = true
 script = ExtResource("3_p57ef")
-entity = ExtResource("4_u5sy4")
+type = ExtResource("4_u5sy4")
+position = Vector2i(1, 0)
+state = 1
 metadata/_custom_type_script = "uid://dq4lpkdncutpi"
 
 [sub_resource type="Resource" id="Resource_p57ef"]
 resource_local_to_scene = true
+script = ExtResource("3_p57ef")
+type = ExtResource("6_0tnpc")
+position = Vector2i(3, 2)
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_u5sy4"]
+resource_local_to_scene = true
+script = ExtResource("3_p57ef")
+type = ExtResource("6_0tnpc")
+position = Vector2i(3, 1)
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_gee14"]
+resource_local_to_scene = true
+script = ExtResource("3_p57ef")
+type = ExtResource("7_vtaks")
+position = Vector2i(3, 3)
+state = -3
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_0tnpc"]
+resource_local_to_scene = true
 script = ExtResource("5_gee14")
-size = Vector2i(12, 5)
+dimensions = Vector2i(6, 4)
 background = ExtResource("2_iywne")
-entities = Array[ExtResource("3_p57ef")]([SubResource("Resource_iywne")])
+entities = Array[ExtResource("3_p57ef")]([SubResource("Resource_lbhrr"), SubResource("Resource_iywne"), SubResource("Resource_p57ef"), SubResource("Resource_u5sy4"), SubResource("Resource_gee14")])
 metadata/_custom_type_script = "uid://bt2wenhrv0k8w"
 
 [node name="Game" type="Control" unique_id=1198991975]
@@ -27,4 +61,4 @@ anchors_preset = 0
 
 [node name="Level" parent="." unique_id=1593966462 instance=ExtResource("1_uwrxv")]
 layout_mode = 0
-level = SubResource("Resource_p57ef")
+level_data = SubResource("Resource_0tnpc")

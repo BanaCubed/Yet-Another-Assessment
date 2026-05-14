@@ -1,11 +1,15 @@
 [gd_resource type="Resource" script_class="EntityType" format=3 uid="uid://bdw23ynt8g8ru"]
 
+[ext_resource type="Script" uid="uid://b7yh114ke0uqd" path="res://scripts/entities/interaction.gd" id="1_gql0b"]
 [ext_resource type="Script" uid="uid://b676twyihh4ye" path="res://scripts/entities/entity_type.gd" id="1_xl8x3"]
+[ext_resource type="Resource" uid="uid://ctkmlstsfceik" path="res://resources/interactions/eat_fruit.tres" id="2_a8o17"]
 [ext_resource type="Texture2D" uid="uid://c708dmmq77wmx" path="res://sprites/entities/horse.png" id="2_pj4ex"]
+[ext_resource type="Resource" uid="uid://4mt4ocv3wk58" path="res://resources/interactions/blocked_by_wall.tres" id="3_a8o17"]
 
 [resource]
 script = ExtResource("1_xl8x3")
 name = &"HORSE"
 sprite = ExtResource("2_pj4ex")
 movement_type = 3
+interactions = Array[ExtResource("1_gql0b")]([ExtResource("2_a8o17"), ExtResource("3_a8o17")])
 metadata/_custom_type_script = "uid://b676twyihh4ye"

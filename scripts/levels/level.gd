@@ -5,6 +5,7 @@ class_name Level extends Control
 
 
 ## Enum containing all the abilities that could be used by entities.
+## This does *not* contain any interactions.
 enum Abilities {
 	NONE,
 	MOVE,
@@ -14,14 +15,16 @@ enum Abilities {
 ## Level data with which the level is initialized.
 @export var level_data: LevelData
 
+
 ## The coordinates of the currently selected tile on the tile grid.
+## In all honesty this variable isn't needed, but I can't really figure out how to safely remove it.
 var selected_coordinates: Vector2i
 ## The type of the currently selected entity.
 var selected_entity: EntityData
-
-
 ## Whether the board is currently expecting the player to select a tile to use an ability on.
 var awaiting_ability_tile_selection := Abilities.NONE
+## The amount of moves performed whilst playing this particular level.
+var level_moves := 0
 
 
 ## Tween variable for the actions bar.
@@ -29,7 +32,6 @@ var tween_actionsbar: Tween
 
 
 #region Grid Preperation
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var grid_tile: GridTile = $Grid/GridRow/GridTile
 	var grid_row: HBoxContainer = $Grid/GridRow
@@ -54,7 +56,6 @@ func _ready() -> void:
 	grid_full.visible = true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# Since the entities might change during the level, their logic should be here.
 	var entities := level_data.entities
@@ -97,22 +98,23 @@ func _on_grid_tile_selected(coordinates: Vector2i) -> void:
 func _on_move_ability_button_pressed() -> void:
 	awaiting_ability_tile_selection = Abilities.MOVE
 
-	# Hacky solution to map level_data.entities[].position to its own array.
-	var entity_tiles: Array[Vector2i] = []
-	for entity in level_data.entities:
-		entity_tiles.append(entity.position)
+	var walls: Array[Vector2i] = Movement.find_wall_tiles(selected_entity, level_data.entities)
+	var obstacles: Array[Vector2i] = Movement.find_blocking_tiles(selected_entity, level_data.entities)
 	
 	var legal_tiles = Movement.get_valid_tiles(
 		selected_entity.type.movement_type,
 		level_data.dimensions,
 		selected_coordinates,
-		entity_tiles,
+		walls,
+		obstacles,
 	)
 	for tile in legal_tiles:
 		var target_node: GridTile = get_node("Grid/GridRow%s/GridTile%s" % [tile.y, tile.x])
 		target_node.set_action_indicator(load("res://sprites/icon_move.png"))
+#endregion
 
 
+#region Selection
 ## Updates and animates the contents of the actions bar to reflect the current state.
 func update_actions_bar():
 	if tween_actionsbar:
@@ -127,10 +129,10 @@ func update_actions_bar():
 		tween_actionsbar.tween_property($ActionsBar, ^"position", Vector2(8.0, 312.0), 0.4)
 	else:
 		tween_actionsbar.tween_property($ActionsBar, ^"position", Vector2(8.0, 400.0), 0.4)
-#endregion
 
 
-#region Abilities
+## Selects a tile and entity at the given coordinates.
+## Does not actually play any animations.
 func select_tile(coordinates: Vector2i) -> void:
 	selected_coordinates = coordinates
 	selected_entity = null
@@ -141,8 +143,46 @@ func select_tile(coordinates: Vector2i) -> void:
 		):
 			selected_entity = entity
 	update_actions_bar()
+#endregion
 
 
+#region Entity Updates
+## Increments level moves by 1 and updates all entity states appropriately.
+func finalise_turn() -> void:
+	proceed_spoilage()
+	delete_pending_removals()
+
+	level_moves += 1
+	$TurnCounter.text = "%s MOVES" % level_moves
+
+
+## Decrements all the spoilage timers.
+func proceed_spoilage() -> void:
+	for entity in level_data.entities:
+		# I am amazing at programming.
+		match entity.state:
+			Entity.States.SPOILS_IN_1:
+				entity.state = Entity.States.SPOILED
+			Entity.States.SPOILS_IN_2:
+				entity.state = Entity.States.SPOILS_IN_1
+			Entity.States.SPOILS_IN_3:
+				entity.state = Entity.States.SPOILS_IN_2
+			_:
+				pass
+
+
+## Deletes any entities with the REMOVED state.
+func delete_pending_removals() -> void:
+	var iterable = level_data.entities
+	for entity in iterable:
+		if entity.state == Entity.States.REMOVED:
+			level_data.entities.erase(entity)
+#endregion
+
+
+#region Abilities
+## Moves the currently selected entity to the specified coordinates.
+## Also deselects the selected entity afterwards.
 func move_to_tile(coordinates: Vector2i) -> void:
 	if (
 		# There isn't really any easier way get the ActionIndicator node.
@@ -154,6 +194,15 @@ func move_to_tile(coordinates: Vector2i) -> void:
 	):
 		for entity in level_data.entities:
 			if (
+				entity.position.y == coordinates.y and
+				entity.position.x == coordinates.x
+			):
+				var interactions_between = Interaction.interactions_between(selected_entity.type, entity.type.name)
+				for inter in interactions_between:
+					selected_entity.state = Interaction.state_after_interaction(inter, selected_entity.state, entity.state)[0]
+					entity.state = Interaction.state_after_interaction(inter, selected_entity.state, entity.state)[1]
+		for entity in level_data.entities:
+			if (
 				entity.position.y == selected_coordinates.y and
 				entity.position.x == selected_coordinates.x
 			):
@@ -161,6 +210,8 @@ func move_to_tile(coordinates: Vector2i) -> void:
 		# Vector2i cannot be set to null, so (-1, -1) is used instead here.
 		selected_coordinates = Vector2i(-1, -1)
 		selected_entity = null
+		
+		finalise_turn()
 		update_actions_bar()
 	else:
 		select_tile(coordinates)

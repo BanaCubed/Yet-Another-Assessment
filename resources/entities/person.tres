@@ -1,7 +1,10 @@
 [gd_resource type="Resource" script_class="EntityType" format=3 uid="uid://lvnjrefjcuvt"]
 
 [ext_resource type="Script" uid="uid://b676twyihh4ye" path="res://scripts/entities/entity_type.gd" id="1_2a3eb"]
+[ext_resource type="Script" uid="uid://b7yh114ke0uqd" path="res://scripts/entities/interaction.gd" id="1_hessy"]
+[ext_resource type="Resource" uid="uid://ctkmlstsfceik" path="res://resources/interactions/eat_fruit.tres" id="2_bqhtt"]
 [ext_resource type="Texture2D" uid="uid://df318cm7y50fv" path="res://sprites/entities/person.png" id="2_mbcbc"]
+[ext_resource type="Resource" uid="uid://4mt4ocv3wk58" path="res://resources/interactions/blocked_by_wall.tres" id="3_bqhtt"]
 
 [resource]
 resource_name = "EntityType Person"
@@ -9,4 +12,5 @@ script = ExtResource("1_2a3eb")
 name = &"STICKMAN"
 sprite = ExtResource("2_mbcbc")
 movement_type = 1
+interactions = Array[ExtResource("1_hessy")]([ExtResource("2_bqhtt"), ExtResource("3_bqhtt")])
 metadata/_custom_type_script = "uid://b676twyihh4ye"

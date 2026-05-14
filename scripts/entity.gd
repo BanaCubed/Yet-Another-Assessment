@@ -13,6 +13,10 @@ enum States {
 	SATIATED = 2,
 	## Food that has spoiled.
 	SPOILED = 3,
+	## An entity that has been removed and will be deleted on the next frame.
+	REMOVED = 4,
+	## For food that has been preserved and will not spoil.
+	PRESERVED = 5,
 	
 	# -- Negative values represent turns until a food entity spoils.
 	SPOILS_IN_1 = -1,
@@ -27,6 +31,7 @@ enum States {
 @export var entity_state: States
 
 
+#region Name from State
 ## Converts the enum values into strings representing the state of an entity.
 ## This function should probably be in a different file but I cannot think of where else it could go.
 static func name_from_state_id(id: States) -> String:
@@ -37,6 +42,10 @@ static func name_from_state_id(id: States) -> String:
 			return "SATIATED"
 		States.SPOILED:
 			return "ROTTEN"
+		States.REMOVED:
+			return "PENDING DELETION"
+		States.PRESERVED:
+			return "PRESERVED"
 		States.SPOILS_IN_1:
 			return "SPOILS IN: 1 MOVE"
 		States.SPOILS_IN_2:
@@ -45,6 +54,7 @@ static func name_from_state_id(id: States) -> String:
 			return "SPOILS IN: 3 MOVES"
 		_:
 			return ""
+#endregion
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

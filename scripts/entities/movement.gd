@@ -55,7 +55,8 @@ static func get_valid_tiles(
 	type: MovementType,
 	grid_size: Vector2i,
 	origin: Vector2i,
-	off_limits: Array[Vector2i],
+	wall_tiles: Array[Vector2i],
+	blocked_tiles: Array[Vector2i],
 ) -> Array[Vector2i]:
 	var tiles_collector: Array[Vector2i] = []
 	match type:
@@ -67,9 +68,10 @@ static func get_valid_tiles(
 					to_check.x >= 0 and
 					to_check.y < grid_size.y and
 					to_check.y >= 0 and
-					to_check not in off_limits
+					to_check not in wall_tiles
 				):
-					tiles_collector.append(to_check)
+					if to_check not in blocked_tiles:
+						tiles_collector.append(to_check)
 					to_check += VECTOR
 		MovementType.DIAGONAL:
 			for VECTOR in DIAGONAL_VECTORS:
@@ -79,9 +81,10 @@ static func get_valid_tiles(
 					to_check.x >= 0 and
 					to_check.y < grid_size.y and
 					to_check.y >= 0 and
-					to_check not in off_limits
+					to_check not in wall_tiles
 				):
-					tiles_collector.append(to_check)
+					if to_check not in blocked_tiles:
+						tiles_collector.append(to_check)
 					to_check += VECTOR
 		MovementType.HORSE:
 			for VECTOR in HORSE_VECTORS:
@@ -91,9 +94,45 @@ static func get_valid_tiles(
 					to_check.x >= 0 and
 					to_check.y < grid_size.y and
 					to_check.y >= 0 and
-					to_check not in off_limits
+					to_check not in wall_tiles
 				):
-					tiles_collector.append(to_check)
-			
+					if to_check not in blocked_tiles:
+						tiles_collector.append(to_check)
 	return tiles_collector
+#endregion
+
+
+#region Tile Categorizer
+## Collects all the tiles considered walls through interactions.
+static func find_wall_tiles(moving: EntityData, entities: Array[EntityData]) -> Array[Vector2i]:
+	var collector: Array[Vector2i] = []
+	for entity in entities:
+		if (
+			Interaction.Outcomes.ACT_AS_WALL in
+			Interaction.interactions_between(moving.type, entity.type.name)
+		):
+			collector.append(entity.position)
+	return collector
+
+
+## Collects all the tiles considered blocking through interactions.
+static func find_blocking_tiles(moving: EntityData, entities: Array[EntityData]) -> Array[Vector2i]:
+	var collector: Array[Vector2i] = []
+	for entity in entities:
+		if not (
+			# This is a very brute-force way to do things but should work fine.
+			(
+				Interaction.Outcomes.CONSUME_TARGET in
+				Interaction.interactions_between(moving.type, entity.type.name) and
+				entity.state != Entity.States.SPOILED
+			) or
+			(
+				Interaction.Outcomes.CONSUME_SELF in
+				Interaction.interactions_between(moving.type, entity.type.name) and
+				moving.state != Entity.States.SPOILED
+				
+			)
+		):
+			collector.append(entity.position)
+	return collector
 #endregion
