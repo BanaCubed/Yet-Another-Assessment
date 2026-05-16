@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Yet Another Assessment"
-config/version="1"
-run/main_scene="uid://byeqwf43w3kvg"
+config/version="6"
+run/main_scene="uid://24mk2fi2xewx"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dykj2mqo3ylll"
 
 [display]
 

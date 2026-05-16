@@ -15,7 +15,8 @@ var tween_panel: Tween
 
 
 func _ready() -> void:
-	$Icon.texture = level_data.sprite
+	if level_data:
+		$Icon.texture = level_data.sprite
 
 
 func _on_panel_gui_input(event: InputEvent) -> void:

@@ -4,9 +4,6 @@ class_name Level extends Control
 ## its designated scene.
 
 
-signal level_won
-
-
 ## Enum containing all the abilities that could be used by entities.
 ## This does *not* contain any interactions.
 enum Abilities {
@@ -36,6 +33,10 @@ var tween_actionsbar: Tween
 var tween_winmodal: Tween
 ## Tween variable for the level grid.
 var tween_grid: Tween
+
+
+## PackedScene of the level selection screen.
+var level_select_scene: PackedScene = preload("res://scenes/level_select.tscn")
 
 
 #region Grid Preperation
@@ -274,5 +275,5 @@ func on_win() -> void:
 
 
 func _on_win_alert_dismissed() -> void:
-	level_won.emit()
+	get_tree().change_scene_to_packed(level_select_scene)
 #endregion

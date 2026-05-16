@@ -3,8 +3,7 @@ class_name MainMenu extends Control
 ## Has little special funtionality besides connecting signals from the main menu buttons.
 
 
-## Emitted when the play button in the main menu is selected.
-signal play_chosen
+var play_scene := preload("res://scenes/level_select.tscn")
 
 
 func _on_exit_button_pressed() -> void:
@@ -14,4 +13,4 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	play_chosen.emit()
+	get_tree().change_scene_to_packed(play_scene)

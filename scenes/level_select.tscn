@@ -38,7 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "LEVEL SELECTION SCREEN TITLE"
+text = "SELECT A LEVEL TO PLAY"
 label_settings = SubResource("LabelSettings_2epne")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -50,6 +50,7 @@ texture = ExtResource("1_3shnc")
 centered = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2123016081]
+clip_contents = false
 layout_mode = 0
 offset_left = 6.0
 offset_top = 54.0
@@ -68,4 +69,14 @@ last_wrap_alignment = 1
 visible = false
 layout_mode = 2
 
+[node name="SelectButton" type="Button" parent="." unique_id=1414684010]
+visible = false
+layout_mode = 0
+offset_left = 284.0
+offset_top = 8.0
+offset_right = 342.0
+offset_bottom = 39.0
+text = "ENTER"
+
 [connection signal="selected" from="ScrollContainer/LevelFlowContainer/LevelSelectEntry" to="." method="_on_level_select_entry_selected"]
+[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]
