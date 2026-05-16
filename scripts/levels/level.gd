@@ -4,6 +4,9 @@ class_name Level extends Control
 ## its designated scene.
 
 
+signal level_won
+
+
 ## Enum containing all the abilities that could be used by entities.
 ## This does *not* contain any interactions.
 enum Abilities {
@@ -268,4 +271,8 @@ func on_win() -> void:
 
 	tween_winmodal.tween_property($WinAlert, "position", Vector2(190.5, 20), 1.0)
 	tween_grid.tween_property($Grid, "position", Vector2(0, 420), 1.0)
+
+
+func _on_win_alert_dismissed() -> void:
+	level_won.emit()
 #endregion

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://iywanqejbb3y"]
 
 [ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="1_rkwx5"]
+[ext_resource type="Script" uid="uid://0am36slf47mk" path="res://scripts/levels/win_alert.gd" id="2_3rwym"]
 [ext_resource type="Texture2D" uid="uid://dykj2mqo3ylll" path="res://sprites/entities/fruit.png" id="2_bhtyk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_35g0t"]
@@ -16,6 +17,7 @@ offset_bottom = -127.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rkwx5")
+script = ExtResource("2_3rwym")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=677136197]
 layout_mode = 2
@@ -44,3 +46,5 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_vertical = 8
 text = "ACCEPT"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

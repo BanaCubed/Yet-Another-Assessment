@@ -138,3 +138,4 @@ grow_vertical = 1
 
 [connection signal="selected" from="Grid/GridRow/GridTile" to="." method="_on_grid_tile_selected"]
 [connection signal="pressed" from="ActionsBar/MoveAbilityButton" to="." method="_on_move_ability_button_pressed"]
+[connection signal="dismissed" from="WinAlert" to="." method="_on_win_alert_dismissed"]
