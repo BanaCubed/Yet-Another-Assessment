@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://24mk2fi2xewx"]
+
+[ext_resource type="Script" uid="uid://cec4vbn3qbm5t" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_bqqt6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control" unique_id=280623415]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqqt6")
+
+[node name="EntityTypeNameHolder" type="Panel" parent="." unique_id=37808004]
+custom_minimum_size = Vector2(270, 40)
+layout_mode = 0
+offset_left = 212.0
+offset_top = 18.0
+offset_right = 482.0
+offset_bottom = 58.0
+theme = ExtResource("1_ekxnf")
+
+[node name="EntityTypeNameDisplay" type="Label" parent="EntityTypeNameHolder" unique_id=952612451]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YET ANOTHER ASSESSMENT"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1628725759]
+z_index = -1
+texture = ExtResource("2_bqqt6")
+centered = false
+
+[node name="ExitButton" type="Button" parent="." unique_id=1966997179]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 233.0
+offset_right = 205.0
+offset_bottom = 264.0
+rotation = 0.13992468
+text = "EXIT"
+
+[node name="PlayButton" type="Button" parent="." unique_id=1458975854]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 287.0
+offset_right = 517.0
+offset_bottom = 318.0
+rotation = -0.19037461
+text = "PLAY"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cwpofugsxoj20"]
 
-[ext_resource type="PackedScene" uid="uid://5jb47hveksoo" path="res://scenes/grid_tile.tscn" id="1_b700e"]
+[ext_resource type="PackedScene" uid="uid://5jb47hveksoo" path="res://scenes/elements/grid_tile.tscn" id="1_b700e"]
 [ext_resource type="Script" uid="uid://by8jvcqpo38fn" path="res://scripts/levels/level.gd" id="1_w8frs"]
 [ext_resource type="Resource" uid="uid://m4p63jpptfxt" path="res://resources/levels/level_001.tres" id="2_2r41h"]
 [ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_ppgk2"]
 [ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="6_2r41h"]
-[ext_resource type="PackedScene" uid="uid://iywanqejbb3y" path="res://scenes/win_alert.tscn" id="7_b121j"]
+[ext_resource type="PackedScene" uid="uid://iywanqejbb3y" path="res://scenes/elements/win_alert.tscn" id="7_b121j"]
 [ext_resource type="Texture2D" uid="uid://co4ifbiebxrvl" path="res://resources/border_gradient.tres" id="7_klq6b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2r41h"]

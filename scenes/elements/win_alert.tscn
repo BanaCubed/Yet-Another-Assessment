@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://iywanqejbb3y"]
 
-[ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="1_21ldu"]
-[ext_resource type="Texture2D" uid="uid://dykj2mqo3ylll" path="res://sprites/entities/fruit.png" id="2_35g0t"]
+[ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="1_rkwx5"]
+[ext_resource type="Texture2D" uid="uid://dykj2mqo3ylll" path="res://sprites/entities/fruit.png" id="2_bhtyk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_35g0t"]
 outline_size = 6
@@ -15,11 +15,11 @@ offset_right = -381.0
 offset_bottom = -127.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_21ldu")
+theme = ExtResource("1_rkwx5")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=677136197]
 layout_mode = 2
-texture = ExtResource("2_35g0t")
+texture = ExtResource("2_bhtyk")
 expand_mode = 1
 stretch_mode = 1
 
