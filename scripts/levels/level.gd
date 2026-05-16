@@ -29,6 +29,10 @@ var level_moves := 0
 
 ## Tween variable for the actions bar.
 var tween_actionsbar: Tween
+## Tween variable for the victory modal.
+var tween_winmodal: Tween
+## Tween variable for the level grid.
+var tween_grid: Tween
 
 
 #region Grid Preperation
@@ -155,6 +159,13 @@ func finalise_turn() -> void:
 	level_moves += 1
 	$TurnCounter.text = "%s MOVES" % level_moves
 
+	var won = has_won()
+	if won:
+		print("Won at turn %s." % level_moves)
+		on_win()
+	else:
+		print("Turn %s processed." % level_moves)
+
 
 ## Decrements all the spoilage timers.
 func proceed_spoilage() -> void:
@@ -224,4 +235,37 @@ func move_to_tile(coordinates: Vector2i) -> void:
 			target_node.clear_action_indicator()
 	
 	awaiting_ability_tile_selection = Abilities.NONE
+#endregion
+
+
+#region Winning
+## Collects whether the player has won the current level.
+func has_won() -> bool:
+	var condition := true
+	for entity in level_data.entities:
+		if (
+			entity.state == Entity.States.HUNGRY or
+			entity.state == Entity.States.SPOILED or
+			entity.state == Entity.States.SPOILS_IN_1 or
+			entity.state == Entity.States.SPOILS_IN_2 or
+			entity.state == Entity.States.SPOILS_IN_3
+		):
+			condition = false
+	return condition
+
+
+## Performs animations that occur when the player wins a level.
+func on_win() -> void:
+	if tween_winmodal:
+		tween_winmodal.kill()
+	tween_winmodal = create_tween()
+	tween_winmodal.set_trans(Tween.TRANS_EXPO)
+	
+	if tween_grid:
+		tween_grid.kill()
+	tween_grid = create_tween()
+	tween_grid.set_trans(Tween.TRANS_EXPO)
+
+	tween_winmodal.tween_property($WinAlert, "position", Vector2(190.5, 20), 1.0)
+	tween_grid.tween_property($Grid, "position", Vector2(0, 420), 1.0)
 #endregion

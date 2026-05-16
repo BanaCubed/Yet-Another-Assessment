@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://m4p63jpptfxt" path="res://resources/levels/level_001.tres" id="2_2r41h"]
 [ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_ppgk2"]
 [ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="6_2r41h"]
+[ext_resource type="PackedScene" uid="uid://iywanqejbb3y" path="res://scenes/win_alert.tscn" id="7_b121j"]
 [ext_resource type="Texture2D" uid="uid://co4ifbiebxrvl" path="res://resources/border_gradient.tres" id="7_klq6b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
@@ -124,6 +125,18 @@ label_settings = SubResource("LabelSettings_2r41h")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="WinAlert" parent="." unique_id=785235843 instance=ExtResource("7_b121j")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -129.5
+offset_top = -400.0
+offset_right = 129.5
+offset_bottom = -167.0
+grow_vertical = 1
 
 [connection signal="selected" from="Grid/GridRow/GridTile" to="." method="_on_grid_tile_selected"]
 [connection signal="pressed" from="ActionsBar/MoveAbilityButton" to="." method="_on_move_ability_button_pressed"]

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://iywanqejbb3y"]
+
+[ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="1_21ldu"]
+[ext_resource type="Texture2D" uid="uid://dykj2mqo3ylll" path="res://sprites/entities/fruit.png" id="2_35g0t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_35g0t"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="WinAlert" type="PanelContainer" unique_id=785235843]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -381.0
+offset_bottom = -127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_21ldu")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=677136197]
+layout_mode = 2
+texture = ExtResource("2_35g0t")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="WinDisplayLabel" type="Label" parent="." unique_id=137605928]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = " YOU ARE WIN!!
+CONGRATULATION!!
+GOOD JOB!!
+SUCCESSFULLY ATE FOOD!!
+AMAZING!!
+SINCERELY!!
+YOU ATE AN APPLE!!
+#PREVENTINGWORLDHUNGER!!"
+label_settings = SubResource("LabelSettings_35g0t")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=275169371]
+layout_mode = 2
+size_flags_vertical = 8
+text = "ACCEPT"
