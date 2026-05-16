@@ -11,17 +11,22 @@ enum States {
 	HUNGRY = 1,
 	## An animal that has eaten food.
 	SATIATED = 2,
-	## Food that has spoiled.
+	## Food entity that has spoiled.
 	SPOILED = 3,
 	## An entity that has been removed and will be deleted on the next frame.
 	REMOVED = 4,
 	## For food that has been preserved and will not spoil.
 	PRESERVED = 5,
 	
-	# -- Negative values represent turns until a food entity spoils.
+	# Negative values represent turns until a food entity spoils.
 	SPOILS_IN_1 = -1,
 	SPOILS_IN_2 = -2,
 	SPOILS_IN_3 = -3,
+	SPOILS_IN_4 = -4,
+	SPOILS_IN_5 = -5,
+	SPOILS_IN_6 = -6,
+	SPOILS_IN_7 = -7,
+	SPOILS_IN_8 = -8,
 }
 
 
@@ -46,12 +51,24 @@ static func name_from_state_id(id: States) -> String:
 			return "PENDING DELETION"
 		States.PRESERVED:
 			return "PRESERVED"
+		
+		# The boring stuff is below this line.
 		States.SPOILS_IN_1:
 			return "SPOILS IN: 1 MOVE"
 		States.SPOILS_IN_2:
 			return "SPOILS IN: 2 MOVES"
 		States.SPOILS_IN_3:
 			return "SPOILS IN: 3 MOVES"
+		States.SPOILS_IN_4:
+			return "SPOILS IN: 4 MOVE"
+		States.SPOILS_IN_5:
+			return "SPOILS IN: 5 MOVES"
+		States.SPOILS_IN_6:
+			return "SPOILS IN: 6 MOVE"
+		States.SPOILS_IN_7:
+			return "SPOILS IN: 7 MOVES"
+		States.SPOILS_IN_8:
+			return "SPOILS IN: 8 MOVES"
 		_:
 			return ""
 #endregion

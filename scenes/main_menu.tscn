@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bqqt6")
 
-[node name="EntityTypeNameHolder" type="Panel" parent="." unique_id=37808004]
+[node name="TitleContainer" type="Panel" parent="." unique_id=37808004]
 custom_minimum_size = Vector2(270, 40)
 layout_mode = 0
 offset_left = 212.0
@@ -26,7 +26,7 @@ offset_right = 482.0
 offset_bottom = 58.0
 theme = ExtResource("1_ekxnf")
 
-[node name="EntityTypeNameDisplay" type="Label" parent="EntityTypeNameHolder" unique_id=952612451]
+[node name="TitleLabel" type="Label" parent="TitleContainer" unique_id=952612451]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 1
 anchors_preset = 15
