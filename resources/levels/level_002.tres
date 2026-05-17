@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dsrvn8ch6ttnu"]
+
+[ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="1_rvm34"]
+[ext_resource type="Script" uid="uid://dq4lpkdncutpi" path="res://scripts/entities/entity_data.gd" id="1_u5c7q"]
+[ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="2_h3vek"]
+[ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="3_t8ctx"]
+[ext_resource type="Resource" uid="uid://c4pt0rgt1kgqq" path="res://resources/entities/fruit.tres" id="4_dmvbv"]
+[ext_resource type="Texture2D" uid="uid://df318cm7y50fv" path="res://sprites/entities/person.png" id="6_royei"]
+
+[sub_resource type="Resource" id="Resource_rvm34"]
+resource_local_to_scene = true
+script = ExtResource("1_u5c7q")
+type = ExtResource("3_t8ctx")
+state = 1
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_t8ctx"]
+resource_local_to_scene = true
+script = ExtResource("1_u5c7q")
+type = ExtResource("3_t8ctx")
+position = Vector2i(2, 0)
+state = 1
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_dmvbv"]
+script = ExtResource("1_u5c7q")
+type = ExtResource("4_dmvbv")
+position = Vector2i(1, 1)
+state = -4
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_royei"]
+script = ExtResource("1_u5c7q")
+type = ExtResource("4_dmvbv")
+position = Vector2i(1, 2)
+state = -4
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[resource]
+script = ExtResource("2_h3vek")
+dimensions = Vector2i(3, 3)
+background = ExtResource("1_rvm34")
+entities = Array[ExtResource("1_u5c7q")]([SubResource("Resource_rvm34"), SubResource("Resource_t8ctx"), SubResource("Resource_dmvbv"), SubResource("Resource_royei")])
+name = &"EQUITY"
+number = 2
+sprite = ExtResource("6_royei")
+metadata/_custom_type_script = "uid://bt2wenhrv0k8w"

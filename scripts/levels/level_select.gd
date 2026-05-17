@@ -20,12 +20,16 @@ func _ready() -> void:
 		entry.level_data = level
 		$ScrollContainer/LevelFlowContainer.add_child(entry)
 		level.resource_local_to_scene = true
+	$ScrollContainer/LevelFlowContainer.remove_child($ScrollContainer/LevelFlowContainer/LevelSelectEntry)
 
 
 func _on_level_select_entry_selected(data: LevelData) -> void:
 	selected_level = data
 	$SelectButton.visible = true
 	$TitleContainer/TitleLabel.text = data.name
+	for entry: LevelSelectEntry in $ScrollContainer/LevelFlowContainer.get_children():
+		if entry.level_data != data:
+			entry.deselect()
 
 
 func _on_select_button_pressed() -> void:

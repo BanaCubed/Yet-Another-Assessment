@@ -116,6 +116,15 @@ func _on_move_ability_button_pressed() -> void:
 	for tile in legal_tiles:
 		var target_node: GridTile = get_node("Grid/GridRow%s/GridTile%s" % [tile.y, tile.x])
 		target_node.set_action_indicator(load("res://sprites/icon_move.png"))
+
+
+func _on_restart_button_pressed() -> void:
+	level_moves = 0
+	entity_data = level_data.duplicate_deep().entities
+	selected_coordinates = Vector2i(-1, -1)
+	selected_entity = null
+	$TurnCounter.text = "%s MOVES" % level_moves
+	update_actions_bar()
 #endregion
 
 
@@ -247,9 +256,7 @@ func has_won() -> bool:
 		if (
 			entity.state == Entity.States.HUNGRY or
 			entity.state == Entity.States.SPOILED or
-			entity.state == Entity.States.SPOILS_IN_1 or
-			entity.state == Entity.States.SPOILS_IN_2 or
-			entity.state == Entity.States.SPOILS_IN_3
+			entity.state < 0
 		):
 			condition = false
 	return condition
@@ -272,5 +279,9 @@ func on_win() -> void:
 
 
 func _on_win_alert_dismissed() -> void:
+	get_tree().change_scene_to_packed(load("res://scenes/level_select.tscn"))
+
+
+func _on_escape_button_pressed() -> void:
 	get_tree().change_scene_to_packed(load("res://scenes/level_select.tscn"))
 #endregion

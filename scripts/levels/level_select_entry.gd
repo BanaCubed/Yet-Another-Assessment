@@ -37,3 +37,11 @@ func select() -> void:
 	tween_panel.tween_property($Panel, ^"rotation", PI / 4.05, 0.4)
 
 	selected.emit(level_data)
+
+## Deselects this level within the level select screen.
+func deselect() -> void:
+	if tween_panel:
+		tween_panel.kill()
+	tween_panel = create_tween()
+	tween_panel.set_trans(Tween.TRANS_EXPO)
+	tween_panel.tween_property($Panel, ^"rotation", 0.0, 0.4)

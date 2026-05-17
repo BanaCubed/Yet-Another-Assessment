@@ -14,7 +14,7 @@ type = ExtResource("4_b0ccj")
 state = 1
 metadata/_custom_type_script = "uid://dq4lpkdncutpi"
 
-[sub_resource type="Resource" id="Resource_qhhqd"]
+[sub_resource type="Resource" id="Resource_82dld"]
 resource_local_to_scene = true
 script = ExtResource("1_saulk")
 type = ExtResource("6_82dld")
@@ -27,8 +27,8 @@ resource_name = "Level 001"
 script = ExtResource("2_tp5ye")
 dimensions = Vector2i(3, 3)
 background = ExtResource("1_tp5ye")
-entities = Array[ExtResource("1_saulk")]([SubResource("Resource_mtmhb"), SubResource("Resource_qhhqd")])
-name = &"APPLES ARE TASTY"
+entities = Array[ExtResource("1_saulk")]([SubResource("Resource_mtmhb"), SubResource("Resource_82dld")])
+name = &"APPLES ARE FOOD"
 number = 1
 sprite = ExtResource("8_sq1sq")
 metadata/_custom_type_script = "uid://bt2wenhrv0k8w"

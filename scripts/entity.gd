@@ -60,11 +60,11 @@ static func name_from_state_id(id: States) -> String:
 		States.SPOILS_IN_3:
 			return "SPOILS IN: 3 MOVES"
 		States.SPOILS_IN_4:
-			return "SPOILS IN: 4 MOVE"
+			return "SPOILS IN: 4 MOVES"
 		States.SPOILS_IN_5:
 			return "SPOILS IN: 5 MOVES"
 		States.SPOILS_IN_6:
-			return "SPOILS IN: 6 MOVE"
+			return "SPOILS IN: 6 MOVES"
 		States.SPOILS_IN_7:
 			return "SPOILS IN: 7 MOVES"
 		States.SPOILS_IN_8:

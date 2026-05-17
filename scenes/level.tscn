@@ -136,6 +136,24 @@ offset_right = 129.5
 offset_bottom = -167.0
 grow_vertical = 1
 
+[node name="RestartButton" type="Button" parent="." unique_id=1917309174]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 3.0
+offset_right = 433.0
+offset_bottom = 34.0
+text = "RESTART"
+
+[node name="EscapeButton" type="Button" parent="." unique_id=1633191354]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 2.0
+offset_right = 513.0
+offset_bottom = 33.0
+text = "BACK TO MENU"
+
 [connection signal="selected" from="Grid/GridRow/GridTile" to="." method="_on_grid_tile_selected"]
 [connection signal="pressed" from="ActionsBar/MoveAbilityButton" to="." method="_on_move_ability_button_pressed"]
 [connection signal="dismissed" from="WinAlert" to="." method="_on_win_alert_dismissed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="EscapeButton" to="." method="_on_escape_button_pressed"]
