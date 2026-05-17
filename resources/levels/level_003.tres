@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cq2x36oi4nljf"]
+
+[ext_resource type="Script" uid="uid://dq4lpkdncutpi" path="res://scripts/entities/entity_data.gd" id="1_3n0qq"]
+[ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="1_re1ml"]
+[ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="2_yheay"]
+[ext_resource type="Resource" uid="uid://lvnjrefjcuvt" path="res://resources/entities/person.tres" id="3_hd0yr"]
+[ext_resource type="Resource" uid="uid://c4pt0rgt1kgqq" path="res://resources/entities/fruit.tres" id="4_6cabr"]
+[ext_resource type="Texture2D" uid="uid://dyvwytmvmrvmr" path="res://sprites/entities/spoilage.png" id="6_hqmgn"]
+
+[sub_resource type="Resource" id="Resource_s315q"]
+script = ExtResource("1_3n0qq")
+type = ExtResource("3_hd0yr")
+position = Vector2i(0, 1)
+state = 2
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_ty3lp"]
+script = ExtResource("1_3n0qq")
+type = ExtResource("4_6cabr")
+position = Vector2i(1, 1)
+state = -1
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_4jotf"]
+script = ExtResource("1_3n0qq")
+type = ExtResource("3_hd0yr")
+position = Vector2i(2, 1)
+state = 1
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[resource]
+script = ExtResource("2_yheay")
+dimensions = Vector2i(3, 3)
+background = ExtResource("1_re1ml")
+entities = Array[ExtResource("1_3n0qq")]([SubResource("Resource_s315q"), SubResource("Resource_ty3lp"), SubResource("Resource_4jotf")])
+name = &"DEVIL IN THE DETAILS"
+number = 3
+sprite = ExtResource("6_hqmgn")
+metadata/_custom_type_script = "uid://bt2wenhrv0k8w"

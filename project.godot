@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Yet Another Assessment"
-config/version="6"
+config/version="7"
 run/main_scene="uid://24mk2fi2xewx"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://dykj2mqo3ylll"

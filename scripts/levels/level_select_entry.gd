@@ -17,6 +17,12 @@ var tween_panel: Tween
 func _ready() -> void:
 	if level_data:
 		$Icon.texture = level_data.sprite
+	else:
+		return
+	
+	var beaten := level_data.number in Persistence.completed
+	if beaten:
+		$CompletionIndicator.visible = true
 
 
 func _on_panel_gui_input(event: InputEvent) -> void:

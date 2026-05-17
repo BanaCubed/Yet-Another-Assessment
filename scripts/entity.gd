@@ -76,4 +76,7 @@ static func name_from_state_id(id: States) -> String:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	$EntitySprite.texture = entity_type.sprite
+	if entity_state != States.SPOILED:
+		$EntitySprite.texture = entity_type.sprite
+	else:
+		$EntitySprite.texture = preload("res://sprites/entities/spoilage.png")

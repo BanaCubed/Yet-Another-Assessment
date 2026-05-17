@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c43f5nrktymhn" path="res://scripts/levels/level_select_entry.gd" id="1_cuqsg"]
 [ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="1_yd0kc"]
+[ext_resource type="Texture2D" uid="uid://b2npit5q7fkl0" path="res://sprites/icon_complete.png" id="3_16187"]
 
 [node name="LevelSelectEntry" type="Control" unique_id=299842650]
 custom_minimum_size = Vector2(40, 40)
@@ -50,5 +51,14 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="CompletionIndicator" type="TextureRect" parent="." unique_id=2075760467]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_right = 40.0
+offset_bottom = 16.0
+texture = ExtResource("3_16187")
+stretch_mode = 2
 
 [connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]

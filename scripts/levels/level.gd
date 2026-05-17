@@ -82,6 +82,7 @@ func _process(_delta: float) -> void:
 				"Grid/GridRow%s/GridTile%s/Entity" % [pos.y, pos.x]
 			)
 			target_node.entity_type = entity_type
+			target_node.entity_state = entity.state
 			target_node.visible = true
 #endregion
 
@@ -279,6 +280,7 @@ func on_win() -> void:
 
 
 func _on_win_alert_dismissed() -> void:
+	Persistence.add_completed(level_data.number)
 	get_tree().change_scene_to_packed(load("res://scenes/level_select.tscn"))
 
 
