@@ -3,9 +3,6 @@ class_name MainMenu extends Control
 ## Has little special funtionality besides connecting signals from the main menu buttons.
 
 
-var play_scene := preload("res://scenes/level_select.tscn")
-
-
 func _on_exit_button_pressed() -> void:
 	# Godot recommends using get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST),
 	# but that doesn't seem to work.
@@ -13,4 +10,4 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_packed(play_scene)
+	get_tree().change_scene_to_packed(preload("res://scenes/level_select.tscn"))

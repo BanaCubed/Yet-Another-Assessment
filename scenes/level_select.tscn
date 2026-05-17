@@ -78,5 +78,14 @@ offset_right = 342.0
 offset_bottom = 39.0
 text = "ENTER"
 
+[node name="ReturnButton" type="Button" parent="." unique_id=835515369]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 3.0
+offset_right = 637.0
+offset_bottom = 34.0
+text = "RETURN TO MENU"
+
 [connection signal="selected" from="ScrollContainer/LevelFlowContainer/LevelSelectEntry" to="." method="_on_level_select_entry_selected"]
 [connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

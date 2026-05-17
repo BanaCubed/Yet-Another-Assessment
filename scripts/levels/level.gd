@@ -35,8 +35,8 @@ var tween_winmodal: Tween
 var tween_grid: Tween
 
 
-## PackedScene of the level selection screen.
-var level_select_scene: PackedScene = preload("res://scenes/level_select.tscn")
+## Array of the entities within the level.
+@onready var entity_data: Array[EntityData] = level_data.duplicate_deep().entities
 
 
 #region Grid Preperation
@@ -65,9 +65,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	# Since the entities might change during the level, their logic should be here.
-	var entities := level_data.entities
-	
 	# Hide all entities on the board to catch any entities that either don't
 	# exist anymore or have moved to new tiles, since there is not callback
 	# for either of those cases that directly hides the entities in their tiles
@@ -77,7 +74,7 @@ func _process(_delta: float) -> void:
 			var target_node: Entity = get_node("Grid/GridRow%s/GridTile%s/Entity" % [j, i])
 			target_node.visible = false
 	
-	for entity in entities:
+	for entity in entity_data:
 		var pos := entity.position
 		var entity_type := entity.type
 		if pos.x < level_data.dimensions.x and pos.x >= 0 and pos.y < level_data.dimensions.y and pos.y >= 0:
@@ -106,8 +103,8 @@ func _on_grid_tile_selected(coordinates: Vector2i) -> void:
 func _on_move_ability_button_pressed() -> void:
 	awaiting_ability_tile_selection = Abilities.MOVE
 
-	var walls: Array[Vector2i] = Movement.find_wall_tiles(selected_entity, level_data.entities)
-	var obstacles: Array[Vector2i] = Movement.find_blocking_tiles(selected_entity, level_data.entities)
+	var walls: Array[Vector2i] = Movement.find_wall_tiles(selected_entity, entity_data)
+	var obstacles: Array[Vector2i] = Movement.find_blocking_tiles(selected_entity, entity_data)
 	
 	var legal_tiles = Movement.get_valid_tiles(
 		selected_entity.type.movement_type,
@@ -144,7 +141,7 @@ func update_actions_bar():
 func select_tile(coordinates: Vector2i) -> void:
 	selected_coordinates = coordinates
 	selected_entity = null
-	for entity in level_data.entities:
+	for entity in entity_data:
 		if (
 			entity.position.y == selected_coordinates.y and
 			entity.position.x == selected_coordinates.x
@@ -173,7 +170,7 @@ func finalise_turn() -> void:
 
 ## Decrements all the spoilage timers.
 func proceed_spoilage() -> void:
-	for entity in level_data.entities:
+	for entity in entity_data:
 		# I am amazing at programming.
 		match entity.state:
 			Entity.States.SPOILS_IN_1:
@@ -188,10 +185,10 @@ func proceed_spoilage() -> void:
 
 ## Deletes any entities with the REMOVED state.
 func delete_pending_removals() -> void:
-	var iterable = level_data.entities
+	var iterable = entity_data
 	for entity in iterable:
 		if entity.state == Entity.States.REMOVED:
-			level_data.entities.erase(entity)
+			entity_data.erase(entity)
 #endregion
 
 
@@ -207,7 +204,7 @@ func move_to_tile(coordinates: Vector2i) -> void:
 			"Grid/GridRow%s/GridTile%s/ActionIndicator" % [coordinates.y, coordinates.x]
 		).visible == true
 	):
-		for entity in level_data.entities:
+		for entity in entity_data:
 			if (
 				entity.position.y == coordinates.y and
 				entity.position.x == coordinates.x
@@ -216,7 +213,7 @@ func move_to_tile(coordinates: Vector2i) -> void:
 				for inter in interactions_between:
 					selected_entity.state = Interaction.state_after_interaction(inter, selected_entity.state, entity.state)[0]
 					entity.state = Interaction.state_after_interaction(inter, selected_entity.state, entity.state)[1]
-		for entity in level_data.entities:
+		for entity in entity_data:
 			if (
 				entity.position.y == selected_coordinates.y and
 				entity.position.x == selected_coordinates.x
@@ -246,7 +243,7 @@ func move_to_tile(coordinates: Vector2i) -> void:
 ## Collects whether the player has won the current level.
 func has_won() -> bool:
 	var condition := true
-	for entity in level_data.entities:
+	for entity in entity_data:
 		if (
 			entity.state == Entity.States.HUNGRY or
 			entity.state == Entity.States.SPOILED or
@@ -275,5 +272,5 @@ func on_win() -> void:
 
 
 func _on_win_alert_dismissed() -> void:
-	get_tree().change_scene_to_packed(level_select_scene)
+	get_tree().change_scene_to_packed(load("res://scenes/level_select.tscn"))
 #endregion

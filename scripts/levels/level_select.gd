@@ -10,8 +10,6 @@ class_name LevelSelect extends Control
 
 ## The data of the selected level.
 var selected_level: LevelData
-## PackedScene containing the level scene.
-var level_scene: PackedScene = preload("res://scenes/level.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +29,10 @@ func _on_level_select_entry_selected(data: LevelData) -> void:
 
 
 func _on_select_button_pressed() -> void:
-	var new_scene: Level = level_scene.instantiate()
+	var new_scene: Level = preload("res://scenes/level.tscn").instantiate()
 	new_scene.level_data = selected_level
 	get_tree().change_scene_to_node(new_scene)
+
+
+func _on_return_button_pressed() -> void:
+	get_tree().change_scene_to_packed(load("res://scenes/main_menu.tscn"))
