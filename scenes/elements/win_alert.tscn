@@ -29,14 +29,7 @@ stretch_mode = 1
 custom_minimum_size = Vector2(225, 0)
 layout_mode = 2
 size_flags_vertical = 1
-text = " YOU ARE WIN!!
-CONGRATULATION!!
-GOOD JOB!!
-SUCCESSFULLY ATE FOOD!!
-AMAZING!!
-SINCERELY!!
-YOU ATE AN APPLE!!
-#PREVENTINGWORLDHUNGER!!"
+text = "YOU HAVE WINNED!!"
 label_settings = SubResource("LabelSettings_35g0t")
 horizontal_alignment = 1
 vertical_alignment = 1
