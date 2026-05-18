@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EntityType" format=3 uid="uid://cyq4kdj44xebi"]
+
+[ext_resource type="Script" uid="uid://b7yh114ke0uqd" path="res://scripts/entities/interaction.gd" id="1_0qj8i"]
+[ext_resource type="Resource" uid="uid://iq3rqdnoheyj" path="res://resources/interactions/eat_wall.tres" id="3_0qj8i"]
+[ext_resource type="Texture2D" uid="uid://b505omjbs0h5f" path="res://sprites/entities/larry.png" id="4_3h5pq"]
+[ext_resource type="Script" uid="uid://b676twyihh4ye" path="res://scripts/entities/entity_type.gd" id="4_t85jd"]
+
+[resource]
+resource_name = "EntityType Person"
+script = ExtResource("4_t85jd")
+name = &"LARRY"
+sprite = ExtResource("4_3h5pq")
+movement_type = 1
+interactions = Array[ExtResource("1_0qj8i")]([ExtResource("3_0qj8i")])
+description = "Eats bricks for a living."
+metadata/_custom_type_script = "uid://b676twyihh4ye"

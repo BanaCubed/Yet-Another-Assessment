@@ -12,4 +12,5 @@ name = &"HORSE"
 sprite = ExtResource("2_pj4ex")
 movement_type = 3
 interactions = Array[ExtResource("1_gql0b")]([ExtResource("2_a8o17"), ExtResource("3_a8o17")])
+description = "Moves like a knight from hit game Chess."
 metadata/_custom_type_script = "uid://b676twyihh4ye"

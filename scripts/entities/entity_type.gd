@@ -10,3 +10,5 @@ class_name EntityType extends Resource
 @export var movement_type: Movement.MovementType
 ## The interactions this entity has with other entities.
 @export var interactions: Array[Interaction]
+## The description of this entity in the bestiary.
+@export var description: String

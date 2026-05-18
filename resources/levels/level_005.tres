@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://w8uiuvi2ifmx"]
+
+[ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="1_2nd2y"]
+[ext_resource type="Script" uid="uid://dq4lpkdncutpi" path="res://scripts/entities/entity_data.gd" id="1_rtja1"]
+[ext_resource type="Script" uid="uid://bt2wenhrv0k8w" path="res://scripts/levels/level_data.gd" id="2_rn566"]
+[ext_resource type="Resource" uid="uid://dyipoqpc1n8en" path="res://resources/entities/wall.tres" id="3_hix8t"]
+[ext_resource type="Resource" uid="uid://c4pt0rgt1kgqq" path="res://resources/entities/fruit.tres" id="4_glhjf"]
+[ext_resource type="Resource" uid="uid://cyq4kdj44xebi" path="res://resources/entities/larry.tres" id="5_c2soc"]
+[ext_resource type="Texture2D" uid="uid://b505omjbs0h5f" path="res://sprites/entities/larry.png" id="7_2nd2y"]
+
+[sub_resource type="Resource" id="Resource_mslsv"]
+script = ExtResource("1_rtja1")
+type = ExtResource("3_hix8t")
+position = Vector2i(3, 0)
+state = -3
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_vk8lw"]
+script = ExtResource("1_rtja1")
+type = ExtResource("3_hix8t")
+position = Vector2i(3, 1)
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_6cgeu"]
+script = ExtResource("1_rtja1")
+type = ExtResource("3_hix8t")
+position = Vector2i(3, 2)
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_5wwyd"]
+script = ExtResource("1_rtja1")
+type = ExtResource("4_glhjf")
+position = Vector2i(5, 1)
+state = 5
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[sub_resource type="Resource" id="Resource_aa63q"]
+script = ExtResource("1_rtja1")
+type = ExtResource("5_c2soc")
+position = Vector2i(1, 1)
+state = 1
+metadata/_custom_type_script = "uid://dq4lpkdncutpi"
+
+[resource]
+script = ExtResource("2_rn566")
+dimensions = Vector2i(7, 3)
+background = ExtResource("1_2nd2y")
+entities = Array[ExtResource("1_rtja1")]([SubResource("Resource_mslsv"), SubResource("Resource_vk8lw"), SubResource("Resource_6cgeu"), SubResource("Resource_5wwyd"), SubResource("Resource_aa63q")])
+name = &"WAIT WHAT"
+number = 5
+sprite = ExtResource("7_2nd2y")
+metadata/_custom_type_script = "uid://bt2wenhrv0k8w"

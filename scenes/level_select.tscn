@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1bog560kpot" path="res://scenes/elements/level_select_entry.tscn" id="4_chg43"]
 [ext_resource type="Resource" uid="uid://cq2x36oi4nljf" path="res://resources/levels/level_003.tres" id="5_7plkq"]
 [ext_resource type="Resource" uid="uid://d1ukps30p652l" path="res://resources/levels/level_004.tres" id="6_ckc44"]
+[ext_resource type="Resource" uid="uid://w8uiuvi2ifmx" path="res://resources/levels/level_005.tres" id="7_o2xx4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2epne"]
 outline_size = 6
@@ -22,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rif6e")
-levelpack = Array[ExtResource("2_r77uv")]([ExtResource("3_4nqmc"), ExtResource("4_4nqmc"), ExtResource("5_7plkq"), ExtResource("6_ckc44")])
+levelpack = Array[ExtResource("2_r77uv")]([ExtResource("3_4nqmc"), ExtResource("4_4nqmc"), ExtResource("5_7plkq"), ExtResource("6_ckc44"), ExtResource("7_o2xx4")])
 
 [node name="TitleContainer" type="Panel" parent="." unique_id=911336971]
 custom_minimum_size = Vector2(270, 40)

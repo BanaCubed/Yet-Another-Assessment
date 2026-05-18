@@ -45,6 +45,22 @@ static func interactions_between(source: EntityType, target: String) -> Array[Ou
     return collector
 
 
+static func name_of_interaction(type: Outcomes) -> StringName:
+    match type:
+        Outcomes.CONSUME_TARGET:
+            return &"CONSUMED"
+        Outcomes.CONSUME_SELF:
+            return &"CONSUMING SELF"
+        Outcomes.PRESERVE_SELF:
+            return &"PRESERVING SELF"
+        Outcomes.PRESERVE_TARGET:
+            return &"PRESERVED"
+        Outcomes.ACT_AS_WALL:
+            return &"BLOCKING"
+        _:
+            return &"UNKNOWN INTERACTION"
+
+
 #region State After Interaction
 ## Takes the current states of the interacting entity and the target entity, and returns a
 ## tuple-like array of the new self state, and new target state.

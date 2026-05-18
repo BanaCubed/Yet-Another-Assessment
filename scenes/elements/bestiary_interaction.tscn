@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://2eillisqignt"]
+
+[ext_resource type="Script" uid="uid://chg1eosarbjfe" path="res://scripts/bestiary_interaction.gd" id="1_yjcw7"]
+[ext_resource type="Resource" uid="uid://ctkmlstsfceik" path="res://resources/interactions/eat_fruit.tres" id="2_2d5c6"]
+
+[node name="BestiaryInteraction" type="HBoxContainer" unique_id=1682421115]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yjcw7")
+interaction = ExtResource("2_2d5c6")
+
+[node name="TargetLabel" type="Label" parent="." unique_id=1313123343]
+layout_mode = 2
+text = "TARGET"
+
+[node name="Label" type="Label" parent="." unique_id=1459413551]
+layout_mode = 2
+text = "is"
+
+[node name="TypeLabel" type="Label" parent="." unique_id=1885448832]
+layout_mode = 2
+text = "INTERACTION TYPE"

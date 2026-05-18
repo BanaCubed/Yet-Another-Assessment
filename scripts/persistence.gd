@@ -31,3 +31,8 @@ static func init_completed() -> void:
             completed.append(i)
     print("Save data loaded")
     print(completed)
+
+
+static func reset_save() -> void:
+    completed = []
+    FileAccess.open("user://savegame.save", FileAccess.WRITE_READ)

@@ -63,5 +63,15 @@ offset_bottom = 318.0
 rotation = -0.19037461
 text = "PLAY"
 
+[node name="ResetSaveButton" type="Button" parent="." unique_id=1393337456]
+layout_mode = 0
+offset_left = 403.00003
+offset_top = 103.00001
+offset_right = 546.0
+offset_bottom = 134.0
+rotation = 0.47641194
+text = "RESET SAVE DATA"
+
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ResetSaveButton" to="." method="_on_reset_save_button_pressed"]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Interaction" format=3 uid="uid://iq3rqdnoheyj"]
+
+[ext_resource type="Script" uid="uid://b7yh114ke0uqd" path="res://scripts/entities/interaction.gd" id="1_xxdaa"]
+
+[resource]
+script = ExtResource("1_xxdaa")
+target_type = &"WALL"
+metadata/_custom_type_script = "uid://b7yh114ke0uqd"

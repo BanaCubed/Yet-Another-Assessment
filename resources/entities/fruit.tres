@@ -8,4 +8,5 @@
 script = ExtResource("1_ib6jq")
 name = &"DELICIOUS FRUIT"
 sprite = ExtResource("2_wqyhm")
+description = "It's a delicious fruit!"
 metadata/_custom_type_script = "uid://b676twyihh4ye"

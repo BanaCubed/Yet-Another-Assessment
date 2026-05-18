@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="EntityType" format=3 uid="uid://dqdhqyhmt3b4t"]
 
+[ext_resource type="Script" uid="uid://b7yh114ke0uqd" path="res://scripts/entities/interaction.gd" id="1_6w0gh"]
 [ext_resource type="Script" uid="uid://b676twyihh4ye" path="res://scripts/entities/entity_type.gd" id="1_weprx"]
 [ext_resource type="Texture2D" uid="uid://b7kce7kbkb8cf" path="res://sprites/entities/default.png" id="2_kw01r"]
 
@@ -7,4 +8,5 @@
 script = ExtResource("1_weprx")
 name = &"UNKNOWN ENTITY"
 sprite = ExtResource("2_kw01r")
+description = "This shouldn't ever appear."
 metadata/_custom_type_script = "uid://b676twyihh4ye"

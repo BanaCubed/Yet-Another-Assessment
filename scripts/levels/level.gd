@@ -25,6 +25,8 @@ var selected_entity: EntityData
 var awaiting_ability_tile_selection := Abilities.NONE
 ## The amount of moves performed whilst playing this particular level.
 var level_moves := 0
+## Boolean value representing whether or not the bestiary is presently open in this level.
+var almanac_open := false
 
 
 ## Tween variable for the actions bar.
@@ -33,6 +35,14 @@ var tween_actionsbar: Tween
 var tween_winmodal: Tween
 ## Tween variable for the level grid.
 var tween_grid: Tween
+## Tween variable for the restart button.
+var tween_restartbutton: Tween
+## Tween variable for the back to menu button.
+var tween_backbutton: Tween
+## Tween variable for the almanac button.
+var tween_almanacbutton: Tween
+## Tween variable for the almanac.
+var tween_almanac: Tween
 
 
 ## Array of the entities within the level.
@@ -62,6 +72,13 @@ func _ready() -> void:
 	# Removing the default grid_row since it could cause issues.
 	grid_full.remove_child(grid_row)
 	grid_full.visible = true
+
+	var types_in_level: Array[EntityType] = []
+	for entity: EntityData in level_data.entities:
+		if entity.type not in types_in_level:
+			types_in_level.append(entity.type)
+	$Bestiary.entity_types = types_in_level
+	$Bestiary._ready()
 
 
 func _process(_delta: float) -> void:
@@ -189,6 +206,16 @@ func proceed_spoilage() -> void:
 				entity.state = Entity.States.SPOILS_IN_1
 			Entity.States.SPOILS_IN_3:
 				entity.state = Entity.States.SPOILS_IN_2
+			Entity.States.SPOILS_IN_4:
+				entity.state = Entity.States.SPOILS_IN_3
+			Entity.States.SPOILS_IN_5:
+				entity.state = Entity.States.SPOILS_IN_4
+			Entity.States.SPOILS_IN_6:
+				entity.state = Entity.States.SPOILS_IN_5
+			Entity.States.SPOILS_IN_7:
+				entity.state = Entity.States.SPOILS_IN_6
+			Entity.States.SPOILS_IN_8:
+				entity.state = Entity.States.SPOILS_IN_7
 			_:
 				pass
 
@@ -274,9 +301,27 @@ func on_win() -> void:
 		tween_grid.kill()
 	tween_grid = create_tween()
 	tween_grid.set_trans(Tween.TRANS_EXPO)
+	
+	if tween_restartbutton:
+		tween_restartbutton.kill()
+	tween_restartbutton = create_tween()
+	tween_restartbutton.set_trans(Tween.TRANS_EXPO)
+	
+	if tween_backbutton:
+		tween_backbutton.kill()
+	tween_backbutton = create_tween()
+	tween_backbutton.set_trans(Tween.TRANS_EXPO)
+	
+	if tween_almanacbutton:
+		tween_almanacbutton.kill()
+	tween_almanacbutton = create_tween()
+	tween_almanacbutton.set_trans(Tween.TRANS_EXPO)
 
 	tween_winmodal.tween_property($WinAlert, "position", Vector2(190.5, 20), 1.0)
 	tween_grid.tween_property($Grid, "position", Vector2(0, 420), 1.0)
+	tween_restartbutton.tween_property($RestartButton, "position", Vector2(300, -200), 1.0)
+	tween_backbutton.tween_property($EscapeButton, "position", Vector2(700, 200), 1.0)
+	tween_almanacbutton.tween_property($AlmanacButton, "position", Vector2(-1000, 0), 1.0)
 
 
 func _on_win_alert_dismissed() -> void:
@@ -286,4 +331,19 @@ func _on_win_alert_dismissed() -> void:
 
 func _on_escape_button_pressed() -> void:
 	get_tree().change_scene_to_packed(load("res://scenes/level_select.tscn"))
+#endregion
+
+
+#region Almanac/Bestiary
+func _on_almanac_button_pressed() -> void:
+	if tween_almanac:
+		tween_almanac.kill()
+	tween_almanac = create_tween()
+	tween_almanac.set_trans(Tween.TRANS_EXPO)
+
+	almanac_open = !almanac_open
+	if almanac_open:
+		tween_almanac.tween_property($Bestiary, "position", Vector2(10, 60), 1.0)
+	else:
+		tween_almanac.tween_property($Bestiary, "position", Vector2(1000, 0), 1.0)
 #endregion

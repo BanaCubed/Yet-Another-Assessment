@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://by8jvcqpo38fn" path="res://scripts/levels/level.gd" id="1_w8frs"]
 [ext_resource type="Texture2D" uid="uid://cck8mpd8366ce" path="res://sprites/background_default.png" id="2_ppgk2"]
 [ext_resource type="Theme" uid="uid://dxk7xouw87tyv" path="res://resources/theme/theme.tres" id="6_2r41h"]
+[ext_resource type="PackedScene" uid="uid://b3dy11xmrba5w" path="res://scenes/elements/bestiary.tscn" id="7_8c41q"]
 [ext_resource type="PackedScene" uid="uid://iywanqejbb3y" path="res://scenes/elements/win_alert.tscn" id="7_b121j"]
 [ext_resource type="Texture2D" uid="uid://co4ifbiebxrvl" path="res://resources/border_gradient.tres" id="7_klq6b"]
 
@@ -138,22 +139,38 @@ grow_vertical = 1
 
 [node name="RestartButton" type="Button" parent="." unique_id=1917309174]
 layout_mode = 0
-offset_left = 358.0
-offset_top = 3.0
-offset_right = 433.0
-offset_bottom = 34.0
+offset_left = 557.0
+offset_top = 38.0
+offset_right = 632.0
+offset_bottom = 69.0
 text = "RESTART"
 
 [node name="EscapeButton" type="Button" parent="." unique_id=1633191354]
 layout_mode = 0
-offset_left = 438.0
-offset_top = 2.0
-offset_right = 513.0
-offset_bottom = 33.0
+offset_left = 504.0
+offset_top = 4.0
+offset_right = 632.0
+offset_bottom = 35.0
 text = "BACK TO MENU"
+
+[node name="AlmanacButton" type="Button" parent="." unique_id=1444529476]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 85.0
+offset_bottom = 50.0
+text = "BESTIARY"
+
+[node name="Bestiary" parent="." unique_id=1987904165 instance=ExtResource("7_8c41q")]
+layout_mode = 1
+offset_left = 680.0
+offset_top = -180.0
+offset_right = 761.0
+offset_bottom = -120.0
 
 [connection signal="selected" from="Grid/GridRow/GridTile" to="." method="_on_grid_tile_selected"]
 [connection signal="pressed" from="ActionsBar/MoveAbilityButton" to="." method="_on_move_ability_button_pressed"]
 [connection signal="dismissed" from="WinAlert" to="." method="_on_win_alert_dismissed"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="EscapeButton" to="." method="_on_escape_button_pressed"]
+[connection signal="pressed" from="AlmanacButton" to="." method="_on_almanac_button_pressed"]

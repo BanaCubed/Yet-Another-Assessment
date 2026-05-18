@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://1nft3g3swwif"]
+
+[ext_resource type="Texture2D" uid="uid://b7kce7kbkb8cf" path="res://sprites/entities/default.png" id="1_bb513"]
+[ext_resource type="Script" uid="uid://b47hc5jjw1hh8" path="res://scripts/bestiary_entry.gd" id="1_dnetp"]
+[ext_resource type="Resource" uid="uid://dqdhqyhmt3b4t" path="res://resources/entities/default.tres" id="2_f76ib"]
+[ext_resource type="PackedScene" uid="uid://2eillisqignt" path="res://scenes/elements/bestiary_interaction.tscn" id="4_6rg25"]
+
+[node name="BestiaryEntry" type="HFlowContainer" unique_id=619659641]
+custom_minimum_size = Vector2(480, 80)
+offset_right = 407.0
+offset_bottom = 32.0
+script = ExtResource("1_dnetp")
+entity_type = ExtResource("2_f76ib")
+
+[node name="SpriteTexture" type="TextureRect" parent="." unique_id=1142400107]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_bb513")
+stretch_mode = 3
+
+[node name="NameLabel" type="Label" parent="." unique_id=667697722]
+layout_mode = 2
+text = "NAME"
+
+[node name="InteractionBox" type="VBoxContainer" parent="." unique_id=593113103]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="InteractionBox" unique_id=1394027983]
+layout_mode = 2
+text = "DESCRIPTION"
+
+[node name="BestiaryInteraction" parent="InteractionBox" unique_id=1682421115 instance=ExtResource("4_6rg25")]
+visible = false
+layout_mode = 2

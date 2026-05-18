@@ -13,4 +13,5 @@ name = &"STICKMAN"
 sprite = ExtResource("2_mbcbc")
 movement_type = 1
 interactions = Array[ExtResource("1_hessy")]([ExtResource("2_bqhtt"), ExtResource("3_bqhtt")])
+description = "Loves eating fruit, especially delicious ones."
 metadata/_custom_type_script = "uid://b676twyihh4ye"
